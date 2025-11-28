@@ -4,6 +4,7 @@ on:
   push:
     branches: [main]
     paths:
+      - .github/workflows/**
       - grammar.js
       - src/**
       - test/**
@@ -11,6 +12,7 @@ on:
       - binding.gyp
   pull_request:
     paths:
+      - .github/workflows/**
       - grammar.js
       - src/**
       - test/**
@@ -31,11 +33,11 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
       - name: Set up tree-sitter
-        uses: tree-sitter/setup-action/cli@v2
+        uses: tree-sitter/setup-action/cli@c4c258862a6a7e43a7aef152256bbf659972c408 # v2
       - name: Run tests
-        uses: tree-sitter/parser-test-action@v3
+        uses: tree-sitter/parser-test-action@05f6ce7c7e54603c45cd87ed926725dc870bcc63 # v3
         with:
           test-rust: true
           test-node: true
@@ -44,6 +46,6 @@ jobs:
           test-swift: ${{ matrix.os != 'windows-latest' }}
           node-version: 22
       - name: Parse examples
-        uses: tree-sitter/parse-action@v4
+        uses: tree-sitter/parse-action@f44ffa94f802024f27e821a72e6f2f3efc5dd521 # v4
         with:
           files: examples/*.ctl
