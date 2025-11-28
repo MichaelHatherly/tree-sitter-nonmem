@@ -1,0 +1,49 @@
+$PROBLEM One compartment PK model with first-order absorption
+
+$INPUT ID TIME AMT DV MDV CMT EVID WT AGE SEX
+
+$DATA ../data/pk_data.csv IGNORE=@
+
+$SUBROUTINES ADVAN2 TRANS2
+
+$PK
+TVCL = THETA(1) * (WT/70)**0.75
+TVV = THETA(2) * (WT/70)
+TVKA = THETA(3)
+
+CL = TVCL * EXP(ETA(1))
+V = TVV * EXP(ETA(2))
+KA = TVKA * EXP(ETA(3))
+
+S2 = V
+
+$ERROR
+IPRED = F
+W = SQRT(THETA(4)**2 + (THETA(5)*IPRED)**2)
+IRES = DV - IPRED
+IWRES = IRES / W
+Y = IPRED + W * ERR(1)
+
+$THETA
+(0, 5, 50)      ; CL
+(0, 50, 500)    ; V
+(0, 1, 10)      ; KA
+(0, 0.1)        ; ADD
+(0, 0.1)        ; PROP
+
+$OMEGA
+0.09            ; IIV CL
+0.09            ; IIV V
+0.09            ; IIV KA
+
+$SIGMA
+1 FIX           ; RUV
+
+$ESTIMATION METHOD=1 INTER MAXEVAL=9999 PRINT=5 NOABORT POSTHOC
+
+$COVARIANCE PRINT=E UNCONDITIONAL
+
+$TABLE ID TIME DV IPRED CWRES IWRES
+       ETA(1) ETA(2) ETA(3)
+       CL V KA
+       NOPRINT ONEHEADER FILE=sdtab1

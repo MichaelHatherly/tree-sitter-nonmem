@@ -1,0 +1,110 @@
+$PROB ADVAN variants - 7, 8, 9, 12
+
+; ADVAN7 - General linear model with user-defined K matrix
+$INPUT ID TIME DV AMT EVID
+$DATA data.csv IGNORE=@
+
+$SUBROUTINES ADVAN7
+$MODEL
+NCOMP=3
+COMP=(DEPOT)
+COMP=(CENTRAL)
+COMP=(PERIPH)
+
+$PK
+K12 = THETA(1)
+K21 = THETA(2)
+K20 = THETA(3)
+S2 = THETA(4)
+
+$ERROR
+Y = F + ERR(1)
+
+$THETA 0.5 0.3 0.1 50
+$OMEGA 0.1
+$SIGMA 1
+
+$EST METHOD=1 MAXEVAL=9999
+$COV
+
+; ADVAN8 - General nonlinear with user-supplied ADVAN
+$PROB ADVAN8 example
+$INPUT ID TIME DV AMT
+$DATA data2.csv IGNORE=@
+
+$SUBROUTINES ADVAN8
+$MODEL NCOMP=2
+
+$PK
+KA = THETA(1)
+CL = THETA(2)
+V = THETA(3)
+
+$DES
+DADT(1) = -KA*A(1)
+DADT(2) = KA*A(1) - CL/V*A(2)
+
+$ERROR
+Y = F*(1 + ERR(1))
+
+$THETA 1 5 50
+$OMEGA 0.1 0.1 0.1
+$SIGMA 0.04
+
+$EST METHOD=1
+
+; ADVAN9 - General nonlinear kinetics (equilibrium)
+$PROB ADVAN9 example
+$INPUT ID TIME DV AMT
+$DATA data3.csv IGNORE=@
+
+$SUBROUTINES ADVAN9 TOL=6
+$MODEL NCOMP=2
+
+$PK
+VMAX = THETA(1)
+KM = THETA(2)
+V = THETA(3)
+
+$DES
+DADT(1) = -VMAX*A(1)/(KM + A(1)/V)
+DADT(2) = VMAX*A(1)/(KM + A(1)/V)
+
+$ERROR
+IPRED = A(1)/V
+Y = IPRED + ERR(1)
+
+$THETA 10 5 50
+$OMEGA 0.1 0.1
+$SIGMA 1
+
+$EST METHOD=1 MAXEVAL=9999
+
+; ADVAN12 - Three compartment with first-order absorption
+$PROB ADVAN12 three compartment
+$INPUT ID TIME DV AMT
+$DATA data4.csv IGNORE=@
+
+$SUBROUTINES ADVAN12 TRANS4
+$PK
+CL = THETA(1) * EXP(ETA(1))
+V2 = THETA(2) * EXP(ETA(2))
+Q3 = THETA(3)
+V3 = THETA(4)
+Q4 = THETA(5)
+V4 = THETA(6)
+KA = THETA(7)
+S2 = V2
+
+$ERROR
+IPRED = F
+Y = IPRED * (1 + ERR(1))
+
+$THETA (0, 10) (0, 100) (0, 5) (0, 50) (0, 2) (0, 100) (0, 1)
+$OMEGA 0.1 0.1
+$SIGMA 0.04
+
+$EST METHOD=1 INTER MAXEVAL=9999
+$COV
+
+$TABLE ID TIME IPRED DV CL V2 FILE=sdtab

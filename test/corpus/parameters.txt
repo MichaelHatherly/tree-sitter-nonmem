@@ -1,0 +1,725 @@
+==================
+THETA simple values
+==================
+
+$THETA 0.5 100
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init value: (number))
+    (theta_init value: (number))))
+
+==================
+THETA with bounds
+==================
+
+$THETA
+(0, 0.5, 10)
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init
+      value: (theta_bounds
+        lower: (number)
+        init: (number)
+        upper: (number)))))
+
+==================
+THETA with lower and init only
+==================
+
+$THETA (0, 0.5)
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init
+      value: (theta_bounds
+        lower: (number)
+        init: (number)))))
+
+==================
+THETA with FIX
+==================
+
+$THETA (0.1 FIX)
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init
+      value: (theta_bounds
+        init: (number)
+        (fix_option)))))
+
+==================
+THETA negative value
+==================
+
+$THETA -0.5
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init value: (number))))
+
+==================
+THETA scientific notation
+==================
+
+$THETA 1E-08 1.5D+3
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init value: (number))
+    (theta_init value: (number))))
+
+==================
+Theta bounds with identifiers
+==================
+
+$THETA (LOW, 0.5, HIGH)
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init
+      value: (theta_bounds
+        lower: (identifier)
+        init: (number)
+        upper: (identifier)))))
+
+==================
+THETA with FIX after bounds
+==================
+
+$THETA (0, 0.5) FIX
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init
+      value: (theta_bounds
+        lower: (number)
+        init: (number))
+      fixed: (fix_option))))
+
+==================
+THETA with INF bounds
+==================
+
+$THETA (-INF, 0.5, INF)
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init
+      value: (theta_bounds
+        lower: (negative_infinity)
+        init: (number)
+        upper: (positive_infinity)))))
+
+==================
+Positive number with plus sign
+==================
+
+$THETA +0.5
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init
+      value: (number))))
+
+==================
+Scientific notation
+==================
+
+$THETA 1E-08 1.5D+3
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init
+      value: (number))
+    (theta_init
+      value: (number))))
+
+==================
+Negative number in bounds
+==================
+
+$THETA (-0.01, 0.5, 1.0)
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init
+      value: (theta_bounds
+        lower: (number)
+        init: (number)
+        upper: (number)))))
+
+==================
+Lowercase scientific notation
+==================
+
+$THETA (0, 1.5e-06, 1)
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init
+      value: (theta_bounds
+        lower: (number)
+        init: (number)
+        upper: (number)))))
+
+==================
+OMEGA simple
+==================
+
+$OMEGA 0.1 0.2
+
+---
+
+(source_file
+  (omega_record
+    (record_keyword)
+    (omega_init value: (number))
+    (omega_init value: (number))))
+
+==================
+OMEGA BLOCK
+==================
+
+$OMEGA BLOCK(2)
+0.1
+0.01 0.2
+
+---
+
+(source_file
+  (omega_record
+    (record_keyword)
+    (block_spec (option_name) size: (integer))
+    (omega_init value: (number))
+    (omega_init value: (number))
+    (omega_init value: (number))))
+
+==================
+OMEGA DIAGONAL
+==================
+
+$OMEGA DIAGONAL(2)
+0.1 0.2
+
+---
+
+(source_file
+  (omega_record
+    (record_keyword)
+    (diagonal_spec (option_name) size: (integer))
+    (omega_init value: (number))
+    (omega_init value: (number))))
+
+==================
+OMEGA with FIX
+==================
+
+$OMEGA 0.1 FIX
+
+---
+
+(source_file
+  (omega_record
+    (record_keyword)
+    (omega_init value: (number) fixed: (fix_option))))
+
+==================
+OMEGA with FIXED
+==================
+
+$OMEGA 0 FIXED
+
+---
+
+(source_file
+  (omega_record
+    (record_keyword)
+    (omega_init value: (number) fixed: (fix_option))))
+
+==================
+Integer in BLOCK spec
+==================
+
+$OMEGA BLOCK(3)
+0.1
+0.01 0.2
+0.001 0.01 0.3
+
+---
+
+(source_file
+  (omega_record
+    (record_keyword)
+    (block_spec
+      (option_name)
+      size: (integer))
+    (omega_init
+      value: (number))
+    (omega_init
+      value: (number))
+    (omega_init
+      value: (number))
+    (omega_init
+      value: (number))
+    (omega_init
+      value: (number))
+    (omega_init
+      value: (number))))
+
+==================
+OMEGA BLOCK with values
+==================
+
+$OMEGA BLOCK(2)
+0.1
+0.05 0.2
+
+---
+
+(source_file
+  (omega_record
+    (record_keyword)
+    (block_spec
+      (option_name)
+      size: (integer))
+    (omega_init
+      value: (number))
+    (omega_init
+      value: (number))
+    (omega_init
+      value: (number))))
+
+==================
+SIGMA simple
+==================
+
+$SIGMA 0.04 0.01
+
+---
+
+(source_file
+  (sigma_record
+    (record_keyword)
+    (sigma_init value: (number))
+    (sigma_init value: (number))))
+
+==================
+SIGMA BLOCK
+==================
+
+$SIGMA BLOCK(2)
+0.04
+0.001 0.01
+
+---
+
+(source_file
+  (sigma_record
+    (record_keyword)
+    (block_spec (option_name) size: (integer))
+    (sigma_init value: (number))
+    (sigma_init value: (number))
+    (sigma_init value: (number))))
+
+==================
+SIGMA with SAME
+==================
+
+$SIGMA BLOCK(1) SAME
+
+---
+
+(source_file
+  (sigma_record
+    (record_keyword)
+    (block_spec
+      (option_name)
+      size: (integer))
+    (same_option)))
+
+==================
+Multiple SIGMA values
+==================
+
+$SIGMA 0.04 0.01
+
+---
+
+(source_file
+  (sigma_record
+    (record_keyword)
+    (sigma_init
+      value: (number))
+    (sigma_init
+      value: (number))))
+
+==================
+THETA single value in parentheses
+==================
+
+$THETA (1.81)
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init
+      value: (theta_bounds
+        init: (number)))))
+
+==================
+THETA compact bounds
+==================
+
+$THETA (0.1,2.77,5)
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init
+      value: (theta_bounds
+        lower: (number)
+        init: (number)
+        upper: (number)))))
+
+==================
+Multiple OMEGA statements
+==================
+
+$OMEGA 0.09
+$OMEGA 0.25
+$OMEGA 0.16
+
+---
+
+(source_file
+  (omega_record
+    (record_keyword)
+    (omega_init value: (number)))
+  (omega_record
+    (record_keyword)
+    (omega_init value: (number)))
+  (omega_record
+    (record_keyword)
+    (omega_init value: (number))))
+
+==================
+OMEGA BLOCK with negative off-diagonal
+==================
+
+$OMEGA BLOCK(3)
+5.55
+0.005 0.0002
+-0.128 0.009 0.515
+
+---
+
+(source_file
+  (omega_record
+    (record_keyword)
+    (block_spec (option_name) size: (integer))
+    (omega_init value: (number))
+    (omega_init value: (number))
+    (omega_init value: (number))
+    (omega_init value: (number))
+    (omega_init value: (number))
+    (omega_init value: (number))))
+
+==================
+THETA negative unbounded
+==================
+
+$THETA -3.77
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init value: (number))))
+
+==================
+THETA small decimal
+==================
+
+$THETA -0.002371
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init value: (number))))
+
+==================
+THETA with full INF bounds
+==================
+
+$THETA (-INF, 0.767, INF)
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init
+      value: (theta_bounds
+        lower: (negative_infinity)
+        init: (number)
+        upper: (positive_infinity)))))
+
+==================
+THETA negative FIX
+==================
+
+$THETA -0.409 FIX
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init
+      value: (number)
+      fixed: (fix_option))))
+
+==================
+OMEGA BLOCK SAME
+==================
+
+$OMEGA BLOCK(1) SAME
+
+---
+
+(source_file
+  (omega_record
+    (record_keyword)
+    (block_spec (option_name) size: (integer))
+    (same_option)))
+
+==================
+SIGMA matrix access
+==================
+
+$ERROR
+W = SQRT(SIGMA(1,1))
+
+---
+
+(source_file
+  (error_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (function_call
+        name: (function_name)
+        arguments: (argument_list
+          (indexed_access
+            name: (identifier)
+            indices: (index_list (number) (number))))))))
+
+==================
+PRIOR NWPRI
+==================
+
+$PRIOR NWPRI
+
+---
+
+(source_file
+  (prior_record
+    (record_keyword)
+    (nwpri_option)))
+
+==================
+PRIOR with options
+==================
+
+$PRIOR NWPRI NTHETA=2 NETA=2
+
+---
+
+(source_file
+  (prior_record
+    (record_keyword)
+    (nwpri_option)
+    (ntheta_option
+          (option_name)
+          (integer))
+    (neta_option (option_name) (integer))))
+
+==================
+THETAP values
+==================
+
+$THETAP (2.5 FIX) (25.0 FIX)
+
+---
+
+(source_file
+  (thetap_record
+    (record_keyword)
+    (theta_init
+      value: (theta_bounds init: (number) (fix_option)))
+    (theta_init
+      value: (theta_bounds init: (number) (fix_option)))))
+
+==================
+THETAPV BLOCK with VALUES
+==================
+
+$THETAPV BLOCK(2) FIX VALUES(10000, 0)
+
+---
+
+(source_file
+  (thetapv_record
+    (record_keyword)
+    (block_spec (option_name) size: (integer))
+    (fix_option)
+    (values_option (option_name) value1: (number) value2: (number))))
+
+==================
+OMEGAP BLOCK
+==================
+
+$OMEGAP BLOCK(2) FIX
+0.09
+0.01 0.09
+
+---
+
+(source_file
+  (omegap_record
+    (record_keyword)
+    (block_spec (option_name) size: (integer))
+    (fix_option)
+    (omega_init value: (number))
+    (omega_init value: (number))
+    (omega_init value: (number))))
+
+==================
+OMEGAPD degrees of freedom
+==================
+
+$OMEGAPD 50 FIX
+
+---
+
+(source_file
+  (omegapd_record
+    (record_keyword)
+    (omega_init value: (number) fixed: (fix_option))))
+
+==================
+SIGMAP BLOCK
+==================
+
+$SIGMAP BLOCK(1) FIX
+0.01
+
+---
+
+(source_file
+  (sigmap_record
+    (record_keyword)
+    (block_spec (option_name) size: (integer))
+    (fix_option)
+    (sigma_init value: (number))))
+
+==================
+SIGMAPD degrees of freedom
+==================
+
+$SIGMAPD 100 FIX
+
+---
+
+(source_file
+  (sigmapd_record
+    (record_keyword)
+    (sigma_init value: (number) fixed: (fix_option))))
+
+==================
+OMEGA with STANDARD
+==================
+
+$OMEGA BLOCK(2) STANDARD
+0.1
+0.01 0.2
+
+---
+
+(source_file
+  (omega_record
+    (record_keyword)
+    (block_spec (option_name) size: (integer))
+    (structure_option)
+    (omega_init value: (number))
+    (omega_init value: (number))
+    (omega_init value: (number))))
+
+==================
+OMEGA with CHOLESKY
+==================
+
+$OMEGA BLOCK(2) CHOLESKY
+0.3
+0.1 0.4
+
+---
+
+(source_file
+  (omega_record
+    (record_keyword)
+    (block_spec (option_name) size: (integer))
+    (structure_option)
+    (omega_init value: (number))
+    (omega_init value: (number))
+    (omega_init value: (number))))
+

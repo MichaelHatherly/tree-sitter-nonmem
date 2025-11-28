@@ -1,0 +1,39 @@
+{
+  "$schema": "https://tree-sitter.github.io/tree-sitter/assets/schemas/config.schema.json",
+  "grammars": [
+    {
+      "name": "nonmem",
+      "camelcase": "NONMEM",
+      "title": "NONMEM",
+      "scope": "source.nonmem",
+      "file-types": [
+        "mod",
+        "ctl"
+      ],
+      "injection-regex": "^nonmem$",
+      "class-name": "TreeSitterNonmem"
+    }
+  ],
+  "metadata": {
+    "version": "0.1.0",
+    "license": "MIT",
+    "description": "NONMEM grammar for tree-sitter",
+    "authors": [
+      {
+        "name": "Michael Hatherly"
+      }
+    ],
+    "links": {
+      "repository": "https://github.com/MichaelHatherly/tree-sitter-nonmem"
+    }
+  },
+  "bindings": {
+    "c": true,
+    "go": true,
+    "node": true,
+    "python": true,
+    "rust": true,
+    "swift": true,
+    "zig": false
+  }
+}

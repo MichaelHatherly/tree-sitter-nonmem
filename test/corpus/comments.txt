@@ -1,0 +1,99 @@
+==================
+Empty file
+==================
+
+
+
+---
+
+(source_file)
+
+==================
+Line comment
+==================
+
+; This is a comment
+
+---
+
+(source_file
+  (comment))
+
+==================
+Multiple comments
+==================
+
+; First comment
+; Second comment
+
+---
+
+(source_file
+  (comment)
+  (comment))
+
+==================
+Double semicolon comment
+==================
+
+;; This is also a comment
+
+---
+
+(source_file
+  (comment))
+
+==================
+Inline comment
+==================
+
+$THETA 0.5  ; clearance
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init value: (number)))
+  (comment))
+
+==================
+Comment in code block
+==================
+
+$PK
+; This is a comment
+CL = THETA(1)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (comment)
+    (assignment
+      target: (identifier)
+      value: (theta_ref index: (integer)))))
+
+==================
+Comment after PROBLEM record
+==================
+
+$PROB Test problem
+; This is a comment
+$PK
+CL = 1
+
+---
+
+(source_file
+  (problem_record
+    (record_keyword)
+    (problem_text))
+  (comment)
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (number))))
+

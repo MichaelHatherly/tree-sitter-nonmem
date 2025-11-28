@@ -1,0 +1,37 @@
+$PROBLEM Simulation from final estimates
+
+$INPUT ID TIME AMT DV MDV CMT EVID
+
+$DATA ../data/sim_data.csv IGNORE=@
+
+$SUBROUTINES ADVAN2 TRANS2
+
+$PK
+CL = THETA(1) * EXP(ETA(1))
+V = THETA(2) * EXP(ETA(2))
+KA = THETA(3) * EXP(ETA(3))
+
+S2 = V
+
+$ERROR
+IPRED = F
+Y = IPRED * (1 + ERR(1)) + ERR(2)
+
+$THETA
+5 FIX           ; CL
+50 FIX          ; V
+1 FIX           ; KA
+
+$OMEGA
+0.09 FIX        ; IIV CL
+0.09 FIX        ; IIV V
+0.09 FIX        ; IIV KA
+
+$SIGMA
+0.04 FIX        ; PROP
+0.01 FIX        ; ADD
+
+$SIMULATION (12345) (67890 UNIFORM) ONLYSIM SUBPROBLEMS=100
+
+$TABLE ID TIME DV IPRED
+       NOPRINT ONEHEADER FILE=simtab

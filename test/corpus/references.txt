@@ -1,0 +1,716 @@
+==================
+THETA reference
+==================
+
+$PK
+CL = THETA(1)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (theta_ref index: (integer)))))
+
+==================
+ETA reference
+==================
+
+$PK
+CL = ETA(1)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (eta_ref index: (integer)))))
+
+==================
+ERR reference
+==================
+
+$ERROR
+Y = ERR(1)
+
+---
+
+(source_file
+  (error_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (err_ref index: (integer)))))
+
+==================
+EPS reference
+==================
+
+$ERROR
+Y = EPS(1)
+
+---
+
+(source_file
+  (error_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (eps_ref index: (integer)))))
+
+==================
+Function call EXP
+==================
+
+$PK
+Y = EXP(X)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (function_call
+        name: (function_name)
+        arguments: (argument_list
+          (identifier))))))
+
+==================
+Function call LOG
+==================
+
+$PK
+Y = LOG(X)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (function_call
+        name: (function_name)
+        arguments: (argument_list
+          (identifier))))))
+
+==================
+Function call SQRT
+==================
+
+$PK
+Y = SQRT(X)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (function_call
+        name: (function_name)
+        arguments: (argument_list
+          (identifier))))))
+
+==================
+Parameter with ETA
+==================
+
+$PK
+CL = THETA(1) * EXP(ETA(1))
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (theta_ref index: (integer))
+        operator: (arithmetic_operator)
+        right: (function_call
+          name: (function_name)
+          arguments: (argument_list
+            (eta_ref index: (integer))))))))
+
+==================
+Indexed access A
+==================
+
+$DES
+DADT(1) = -K * A(1)
+
+---
+
+(source_file
+  (des_record
+    (record_keyword)
+    (assignment
+      target: (indexed_access
+        name: (identifier)
+        indices: (index_list (number)))
+      value: (binary_expression
+        left: (unary_expression
+          operator: (arithmetic_operator)
+          operand: (identifier))
+        operator: (arithmetic_operator)
+        right: (indexed_access
+          name: (identifier)
+          indices: (index_list (number)))))))
+
+==================
+Function with multiple args
+==================
+
+$PK
+Y = MIN(A, B)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (function_call
+        name: (function_name)
+        arguments: (argument_list
+          (identifier)
+          (identifier))))))
+
+==================
+DEXP function
+==================
+
+$PK
+X = DEXP(Y)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (function_call
+        name: (function_name)
+        arguments: (argument_list
+          (identifier))))))
+
+==================
+Array with variable index
+==================
+
+$PK
+X = ARR(I)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (indexed_access
+        name: (identifier)
+        indices: (index_list (identifier))))))
+
+==================
+Matrix indexing
+==================
+
+$PK
+X = SIGMA(1,1)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (indexed_access
+        name: (identifier)
+        indices: (index_list (number) (number))))))
+
+==================
+ETA with variable index
+==================
+
+$PK
+X = ETA(N)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (eta_ref
+        index: (identifier)))))
+
+==================
+Multiple ETA references
+==================
+
+$PK
+CL = THETA(1)*EXP(ETA(1))
+V = THETA(2)*EXP(ETA(2))
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (theta_ref
+          index: (integer))
+        operator: (arithmetic_operator)
+        right: (function_call
+          name: (function_name)
+          arguments: (argument_list
+            (eta_ref
+              index: (integer))))))
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (theta_ref
+          index: (integer))
+        operator: (arithmetic_operator)
+        right: (function_call
+          name: (function_name)
+          arguments: (argument_list
+            (eta_ref
+              index: (integer))))))))
+
+==================
+Nested function calls
+==================
+
+$PK
+X = EXP(LOG(THETA(1)))
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (function_call
+        name: (function_name)
+        arguments: (argument_list
+          (function_call
+            name: (function_name)
+            arguments: (argument_list
+              (theta_ref
+                index: (integer)))))))))
+
+==================
+SIN as function call
+==================
+
+$PK
+X = SIN(Y)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (function_call
+        name: (function_name)
+        arguments: (argument_list
+          (identifier))))))
+
+==================
+SIN as variable
+==================
+
+$PK
+SIN = 5
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (number))))
+
+==================
+PHI as variable
+==================
+
+$PK
+PHI = LOG(X)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (function_call
+        name: (function_name)
+        arguments: (argument_list
+          (identifier))))))
+
+==================
+Array assignment with variable index
+==================
+
+$PK
+ARR(I) = X
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (indexed_access
+        name: (identifier)
+        indices: (index_list (identifier)))
+      value: (identifier))))
+
+==================
+Multiple DADT equations
+==================
+
+$DES
+DADT(1) = -K*A(1)
+DADT(2) = K*A(1) - K2*A(2)
+
+---
+
+(source_file
+  (des_record
+    (record_keyword)
+    (assignment
+      target: (indexed_access
+        name: (identifier)
+        indices: (index_list (number)))
+      value: (binary_expression
+        left: (unary_expression
+          operator: (arithmetic_operator)
+          operand: (identifier))
+        operator: (arithmetic_operator)
+        right: (indexed_access
+          name: (identifier)
+          indices: (index_list (number)))))
+    (assignment
+      target: (indexed_access
+        name: (identifier)
+        indices: (index_list (number)))
+      value: (binary_expression
+        left: (binary_expression
+          left: (identifier)
+          operator: (arithmetic_operator)
+          right: (indexed_access
+            name: (identifier)
+            indices: (index_list (number))))
+        operator: (arithmetic_operator)
+        right: (binary_expression
+          left: (identifier)
+          operator: (arithmetic_operator)
+          right: (indexed_access
+            name: (identifier)
+            indices: (index_list (number))))))))
+
+==================
+F and Y assignment in ERROR
+==================
+
+$ERROR
+IPRED = F
+Y = F + F*EPS(1)
+
+---
+
+(source_file
+  (error_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (identifier))
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (identifier)
+        operator: (arithmetic_operator)
+        right: (binary_expression
+          left: (identifier)
+          operator: (arithmetic_operator)
+          right: (eps_ref
+            index: (integer)))))))
+
+==================
+Bioavailability parameters
+==================
+
+$PK
+F1 = 0.8
+F2 = THETA(1)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (number))
+    (assignment
+      target: (identifier)
+      value: (theta_ref index: (integer)))))
+
+==================
+Scaling parameters
+==================
+
+$PK
+S1 = V
+S2 = V2
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (identifier))
+    (assignment
+      target: (identifier)
+      value: (identifier))))
+
+==================
+LOG with expression
+==================
+
+$ERROR
+IPRE = LOG(F + 0.000001)
+
+---
+
+(source_file
+  (error_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (function_call
+        name: (function_name)
+        arguments: (argument_list
+          (binary_expression
+            left: (identifier)
+            operator: (arithmetic_operator)
+            right: (number)))))))
+
+==================
+NEWIND special variable
+==================
+
+$ERROR
+IF(NEWIND.NE.2) OCHZ = 0
+
+---
+
+(source_file
+  (error_record
+    (record_keyword)
+    (if_statement
+      (keyword)
+      condition: (binary_expression
+        left: (identifier)
+        operator: (comparison_operator)
+        right: (number))
+      action: (assignment
+        target: (identifier)
+        value: (number)))))
+
+==================
+ICALL special variable
+==================
+
+$ERROR
+IF(ICALL.EQ.4) Y = 0
+
+---
+
+(source_file
+  (error_record
+    (record_keyword)
+    (if_statement
+      (keyword)
+      condition: (binary_expression
+        left: (identifier)
+        operator: (comparison_operator)
+        right: (number))
+      action: (assignment
+        target: (identifier)
+        value: (number)))))
+
+==================
+A_0 initial conditions
+==================
+
+$PK
+A_0(1) = F0
+A_0(2) = 0
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (indexed_access
+        name: (identifier)
+        indices: (index_list (number)))
+      value: (identifier))
+    (assignment
+      target: (indexed_access
+        name: (identifier)
+        indices: (index_list (number)))
+      value: (number))))
+
+==================
+PHI cumulative normal
+==================
+
+$ERROR
+P = PHI(DUM)
+
+---
+
+(source_file
+  (error_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (function_call
+        name: (function_name)
+        arguments: (argument_list
+          (identifier))))))
+
+==================
+COS trigonometric function
+==================
+
+$PK
+X = COS(2*3.1416*T/24)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (function_call
+        name: (function_name)
+        arguments: (argument_list
+          (binary_expression
+            left: (binary_expression
+              left: (binary_expression
+                left: (number)
+                operator: (arithmetic_operator)
+                right: (number))
+              operator: (arithmetic_operator)
+              right: (identifier))
+            operator: (arithmetic_operator)
+            right: (number)))))))
+
+==================
+INT function
+==================
+
+$PK
+X = INT(Y)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (function_call
+        name: (function_name)
+        arguments: (argument_list
+          (identifier))))))
+
+==================
+ALAG parameter
+==================
+
+$PK
+ALAG1 = THETA(5)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (theta_ref index: (integer)))))
+
+==================
+ABS function
+==================
+
+$PK
+X = ABS(Y-1)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (function_call
+        name: (function_name)
+        arguments: (argument_list
+          (binary_expression
+            left: (identifier)
+            operator: (arithmetic_operator)
+            right: (number)))))))
+
+==================
+MOD function
+==================
+
+$PK
+X = MOD(I, 10)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (function_call
+        name: (function_name)
+        arguments: (argument_list
+          (identifier)
+          (number))))))
+

@@ -1,0 +1,646 @@
+==================
+INPUT columns
+==================
+
+$INPUT ID TIME AMT DV
+
+---
+
+(source_file
+  (input_record
+    (record_keyword)
+    (column_def name: (identifier))
+    (column_def name: (identifier))
+    (column_def name: (identifier))
+    (column_def name: (identifier))))
+
+==================
+INPUT with DROP
+==================
+
+$INPUT ID TIME WT=DROP DV
+
+---
+
+(source_file
+  (input_record
+    (record_keyword)
+    (column_def name: (identifier))
+    (column_def name: (identifier))
+    (column_def name: (identifier) modifier: (drop_modifier (option_name)))
+    (column_def name: (identifier))))
+
+==================
+INPUT with SKIP
+==================
+
+$INPUT ID TIME WT=SKIP DV
+
+---
+
+(source_file
+  (input_record
+    (record_keyword)
+    (column_def name: (identifier))
+    (column_def name: (identifier))
+    (column_def name: (identifier) modifier: (skip_modifier (option_name)))
+    (column_def name: (identifier))))
+
+==================
+INPUT with alias
+==================
+
+$INPUT ID TIME OBS=DV
+
+---
+
+(source_file
+  (input_record
+    (record_keyword)
+    (column_def name: (identifier))
+    (column_def name: (identifier))
+    (column_def name: (identifier) modifier: (column_alias alias: (identifier)))))
+
+==================
+DATA with filename
+==================
+
+$DATA ../data.csv
+
+---
+
+(source_file
+  (data_record
+    (record_keyword)
+    (filename)))
+
+==================
+DATA with IGNORE character
+==================
+
+$DATA data.csv IGNORE=@
+
+---
+
+(source_file
+  (data_record
+    (record_keyword)
+    (filename)
+    (ignore_option (option_name) (ignore_character))))
+
+==================
+DATA with IGNORE condition
+==================
+
+$DATA data.csv IGNORE=(ID.EQ.0)
+
+---
+
+(source_file
+  (data_record
+    (record_keyword)
+    (filename)
+    (ignore_option
+      (option_name)
+      (ignore_condition
+        (binary_expression
+          left: (identifier)
+          operator: (comparison_operator)
+          right: (number))))))
+
+==================
+DATA with quoted filename
+==================
+
+$DATA 'my data.csv' IGNORE=@
+
+---
+
+(source_file
+  (data_record
+    (record_keyword)
+    (string)
+    (ignore_option (option_name) (ignore_character))))
+
+==================
+IGNORE without equals
+==================
+
+$DATA data.csv IGNORE @
+
+---
+
+(source_file
+  (data_record
+    (record_keyword)
+    (filename)
+    (ignore_option (option_name) (ignore_character))))
+
+==================
+Windows backslash path
+==================
+
+$DATA ..\data\file.csv
+
+---
+
+(source_file
+  (data_record
+    (record_keyword)
+    (filename)))
+
+==================
+TABLE with variables
+==================
+
+$TABLE ID TIME DV IPRED
+
+---
+
+(source_file
+  (table_record
+    (record_keyword)
+    (table_column (identifier))
+    (table_column (identifier))
+    (table_column (identifier))
+    (table_column (identifier))))
+
+==================
+TABLE with FILE option
+==================
+
+$TABLE ID TIME FILE=sdtab
+
+---
+
+(source_file
+  (table_record
+    (record_keyword)
+    (table_column (identifier))
+    (table_column (identifier))
+    (file_option (option_name) (filename))))
+
+==================
+TABLE with NOPRINT
+==================
+
+$TABLE ID TIME NOPRINT FILE=sdtab
+
+---
+
+(source_file
+  (table_record
+    (record_keyword)
+    (table_column (identifier))
+    (table_column (identifier))
+    (noprint_option)
+    (file_option (option_name) (filename))))
+
+==================
+TABLE with ONEHEADER
+==================
+
+$TABLE ID TIME ONEHEADER FILE=sdtab
+
+---
+
+(source_file
+  (table_record
+    (record_keyword)
+    (table_column (identifier))
+    (table_column (identifier))
+    (oneheader_option)
+    (file_option (option_name) (filename))))
+
+==================
+TABLE multiline
+==================
+
+$TABLE ID TIME DV
+  IPRED CWRES FILE=sdtab
+
+---
+
+(source_file
+  (table_record
+    (record_keyword)
+    (table_column (identifier))
+    (table_column (identifier))
+    (table_column (identifier))
+    (table_column (identifier))
+    (table_column (identifier))
+    (file_option (option_name) (filename))))
+
+==================
+TABLE with multiple items
+==================
+
+$TABLE ID TIME DV PRED IPRED CWRES NOPRINT ONEHEADER FILE=sdtab
+
+---
+
+(source_file
+  (table_record
+    (record_keyword)
+    (table_column (identifier))
+    (table_column (identifier))
+    (table_column (identifier))
+    (table_column (identifier))
+    (table_column (identifier))
+    (table_column (identifier))
+    (noprint_option)
+    (oneheader_option)
+    (file_option
+          (option_name)
+          (filename))))
+
+==================
+TABLE with NOAPPEND and FORMAT
+==================
+
+$TABLE ID NOAPPEND FORMAT=,1PE11.4
+
+---
+
+(source_file
+  (table_record
+    (record_keyword)
+    (table_column (identifier))
+    (noappend_option)
+    (format_option (option_name) (format_spec))))
+
+==================
+ETA in TABLE
+==================
+
+$TABLE ID ETA(1) FILE=out.tab
+
+---
+
+(source_file
+  (table_record
+    (record_keyword)
+    (table_column (identifier))
+    (table_column
+      (eta_ref
+        index: (integer)))
+    (file_option
+          (option_name)
+          (filename))))
+
+==================
+ETA range in TABLE
+==================
+
+$TABLE ID ETAS(1:5)
+
+---
+
+(source_file
+  (table_record
+    (record_keyword)
+    (table_column (identifier))
+    (table_column
+      (eta_range
+        start: (integer)
+        end: (integer)))))
+
+==================
+IGNORE=C character
+==================
+
+$DATA datafile.CSV IGNORE=C
+
+---
+
+(source_file
+  (data_record
+    (record_keyword)
+    (filename)
+    (ignore_option (option_name) (ignore_character))))
+
+==================
+IGNORE=D character
+==================
+
+$DATA data.csv IGNORE=D
+
+---
+
+(source_file
+  (data_record
+    (record_keyword)
+    (filename)
+    (ignore_option (option_name) (ignore_character))))
+
+==================
+Multiple DROP columns
+==================
+
+$INPUT ID DATE=DROP TIME AMT EVID MDV TAD DV
+
+---
+
+(source_file
+  (input_record
+    (record_keyword)
+    (column_def name: (identifier))
+    (column_def name: (identifier) modifier: (drop_modifier (option_name)))
+    (column_def name: (identifier))
+    (column_def name: (identifier))
+    (column_def name: (identifier))
+    (column_def name: (identifier))
+    (column_def name: (identifier))
+    (column_def name: (identifier))))
+
+==================
+TABLE with ETA without parentheses
+==================
+
+$TABLE ID CL V ETA1 ETA2 NOPRINT FILE=patab
+
+---
+
+(source_file
+  (table_record
+    (record_keyword)
+    (table_column (identifier))
+    (table_column (identifier))
+    (table_column (identifier))
+    (table_column (identifier))
+    (table_column (identifier))
+    (noprint_option)
+    (file_option (option_name) (filename))))
+
+==================
+TABLE with FIRSTRECONLY
+==================
+
+$TABLE ID ETA1 ETA2 NOPRINT ONEHEADER FIRSTRECONLY FILE=ebtab
+
+---
+
+(source_file
+  (table_record
+    (record_keyword)
+    (table_column (identifier))
+    (table_column (identifier))
+    (table_column (identifier))
+    (noprint_option)
+    (oneheader_option)
+    (firstreconly_option)
+    (file_option (option_name) (filename))))
+
+==================
+IGNORE with condition list
+==================
+
+$DATA data.csv IGNORE=(ID.EQ.1,ID.EQ.2)
+
+---
+
+(source_file
+  (data_record
+    (record_keyword)
+    (filename)
+    (ignore_option
+      (option_name)
+      (ignore_condition
+        (binary_expression
+          left: (identifier)
+          operator: (comparison_operator)
+          right: (number))
+        (binary_expression
+          left: (identifier)
+          operator: (comparison_operator)
+          right: (number))))))
+
+==================
+Multiple stacked IGNORE
+==================
+
+$DATA data.csv IGNORE=@ IGNORE=(TIME.GT.28)
+
+---
+
+(source_file
+  (data_record
+    (record_keyword)
+    (filename)
+    (ignore_option (option_name) (ignore_character))
+    (ignore_option
+      (option_name)
+      (ignore_condition
+        (binary_expression
+          left: (identifier)
+          operator: (comparison_operator)
+          right: (number))))))
+
+==================
+IGNORE without parentheses
+==================
+
+$DATA data.csv IGNORE(FLAG.GE.4)
+
+---
+
+(source_file
+  (data_record
+    (record_keyword)
+    (filename)
+    (ignore_option
+      (option_name)
+      (ignore_condition
+        (binary_expression
+          left: (identifier)
+          operator: (comparison_operator)
+          right: (number))))))
+
+==================
+TABLE with NOAPP abbreviation
+==================
+
+$TABLE ID TIME NOAPP ONEHEAD FILE=out.tab
+
+---
+
+(source_file
+  (table_record
+    (record_keyword)
+    (table_column (identifier))
+    (table_column (identifier))
+    (noappend_option)
+    (oneheader_option)
+    (file_option (option_name) (filename))))
+
+==================
+DATA with REWIND
+==================
+
+$DATA data.csv IGNORE=@ REWIND
+
+---
+
+(source_file
+  (data_record
+    (record_keyword)
+    (filename)
+    (ignore_option (option_name) (ignore_character))
+    (rewind_option)))
+
+
+==================
+DATA with RECORDS
+==================
+
+$DATA data.csv RECORDS=1000
+
+---
+
+(source_file
+  (data_record
+    (record_keyword)
+    (filename)
+    (records_option (option_name) (integer))))
+
+==================
+DATA with NULL
+==================
+
+$DATA data.csv NULL=-999
+
+---
+
+(source_file
+  (data_record
+    (record_keyword)
+    (filename)
+    (null_option (option_name) (number))))
+
+==================
+DATA with WIDE
+==================
+
+$DATA data.csv WIDE
+
+---
+
+(source_file
+  (data_record
+    (record_keyword)
+    (filename)
+    (wide_option)))
+
+==================
+DATA with CHECKOUT
+==================
+
+$DATA data.csv CHECKOUT
+
+---
+
+(source_file
+  (data_record
+    (record_keyword)
+    (filename)
+    (checkout_option)))
+
+==================
+ACCEPT option
+==================
+
+$DATA data.csv ACCEPT=(DV.GT.0)
+
+---
+
+(source_file
+  (data_record
+    (record_keyword)
+    (filename)
+    (accept_option
+      (option_name)
+      (ignore_condition
+        (binary_expression
+          left: (identifier)
+          operator: (comparison_operator)
+          right: (number))))))
+
+
+==================
+TABLE with FORWARD
+==================
+
+$TABLE ID TIME FORWARD FILE=out.tab
+
+---
+
+(source_file
+  (table_record
+    (record_keyword)
+    (table_column (identifier))
+    (table_column (identifier))
+    (forward_option)
+    (file_option (option_name) (filename))))
+
+==================
+TABLE with APPEND
+==================
+
+$TABLE ID DV APPEND FILE=out.tab
+
+---
+
+(source_file
+  (table_record
+    (record_keyword)
+    (table_column (identifier))
+    (table_column (identifier))
+    (append_option)
+    (file_option (option_name) (filename))))
+
+==================
+TABLE with CONDITIONAL
+==================
+
+$TABLE ID PRED CONDITIONAL FILE=out.tab
+
+---
+
+(source_file
+  (table_record
+    (record_keyword)
+    (table_column (identifier))
+    (table_column (identifier))
+    (conditional_option)
+    (file_option (option_name) (filename))))
+
+==================
+TABLE with ESAMPLE
+==================
+
+$TABLE ID ESAMPLE=300 FILE=out.tab
+
+---
+
+(source_file
+  (table_record
+    (record_keyword)
+    (table_column (identifier))
+    (esample_option (option_name) (integer))
+    (file_option (option_name) (filename))))
+
+==================
+TABLE with WRESCHOL
+==================
+
+$TABLE ID WRESCHOL FILE=out.tab
+
+---
+
+(source_file
+  (table_record
+    (record_keyword)
+    (table_column (identifier))
+    (wreschol_option)
+    (file_option (option_name) (filename))))
+

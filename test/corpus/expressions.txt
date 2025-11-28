@@ -1,0 +1,546 @@
+==================
+Simple assignment
+==================
+
+$PK
+CL = 10
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (number))))
+
+==================
+Assignment with identifier
+==================
+
+$PK
+K = CL
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (identifier))))
+
+==================
+Addition
+==================
+
+$PK
+Y = A + B
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (identifier)
+        operator: (arithmetic_operator)
+        right: (identifier)))))
+
+==================
+Subtraction
+==================
+
+$PK
+Y = A - B
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (identifier)
+        operator: (arithmetic_operator)
+        right: (identifier)))))
+
+==================
+Multiplication
+==================
+
+$PK
+Y = A * B
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (identifier)
+        operator: (arithmetic_operator)
+        right: (identifier)))))
+
+==================
+Division
+==================
+
+$PK
+K = CL / V
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (identifier)
+        operator: (arithmetic_operator)
+        right: (identifier)))))
+
+==================
+Exponentiation
+==================
+
+$PK
+Y = X ** 2
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (identifier)
+        operator: (arithmetic_operator)
+        right: (number)))))
+
+==================
+Unary minus
+==================
+
+$PK
+A = -B
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (unary_expression
+        operator: (arithmetic_operator)
+        operand: (identifier)))))
+
+==================
+Parenthesized expression
+==================
+
+$PK
+Y = (A + B) * C
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (parenthesized_expression
+          (binary_expression
+            left: (identifier)
+            operator: (arithmetic_operator)
+            right: (identifier)))
+        operator: (arithmetic_operator)
+        right: (identifier)))))
+
+==================
+Operator precedence mul over add
+==================
+
+$PK
+Y = A + B * C
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (identifier)
+        operator: (arithmetic_operator)
+        right: (binary_expression
+          left: (identifier)
+          operator: (arithmetic_operator)
+          right: (identifier))))))
+
+==================
+Operator precedence exp over mul
+==================
+
+$PK
+Y = A * B ** 2
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (identifier)
+        operator: (arithmetic_operator)
+        right: (binary_expression
+          left: (identifier)
+          operator: (arithmetic_operator)
+          right: (number))))))
+
+==================
+Multiple statements
+==================
+
+$PK
+CL = 10
+V = 50
+K = CL / V
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (number))
+    (assignment
+      target: (identifier)
+      value: (number))
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (identifier)
+        operator: (arithmetic_operator)
+        right: (identifier)))))
+
+==================
+Trailing decimal in expression
+==================
+
+$PK
+X = 1.-THETA(1)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (number)
+        operator: (arithmetic_operator)
+        right: (theta_ref
+          index: (integer))))))
+
+==================
+Leading decimal number
+==================
+
+$PK
+X = .5 + Y
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (number)
+        operator: (arithmetic_operator)
+        right: (identifier)))))
+
+==================
+Chained multiplication
+==================
+
+$PK
+Y = A*B*C*D
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (binary_expression
+          left: (binary_expression
+            left: (identifier)
+            operator: (arithmetic_operator)
+            right: (identifier))
+          operator: (arithmetic_operator)
+          right: (identifier))
+        operator: (arithmetic_operator)
+        right: (identifier)))))
+
+==================
+Exponentiation with THETA
+==================
+
+$PK
+K = (WT/70)**THETA(1)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (parenthesized_expression
+          (binary_expression
+            left: (identifier)
+            operator: (arithmetic_operator)
+            right: (number)))
+        operator: (arithmetic_operator)
+        right: (theta_ref
+          index: (integer))))))
+
+==================
+Complex nested expression
+==================
+
+$PK
+BSA = (HT * WT / 3600)**0.5
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (parenthesized_expression
+          (binary_expression
+            left: (binary_expression
+              left: (identifier)
+              operator: (arithmetic_operator)
+              right: (identifier))
+            operator: (arithmetic_operator)
+            right: (number)))
+        operator: (arithmetic_operator)
+        right: (number)))))
+
+==================
+Double star exponentiation
+==================
+
+$PK
+X = 2**3
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (number)
+        operator: (arithmetic_operator)
+        right: (number)))))
+
+==================
+Complex expression
+==================
+
+$PK
+W = SQRT(THETA(1)**2 + THETA(2)**2 * IPRED**2)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (function_call
+        name: (function_name)
+        arguments: (argument_list
+          (binary_expression
+            left: (binary_expression
+              left: (theta_ref index: (integer))
+              operator: (arithmetic_operator)
+              right: (number))
+            operator: (arithmetic_operator)
+            right: (binary_expression
+              left: (binary_expression
+                left: (theta_ref index: (integer))
+                operator: (arithmetic_operator)
+                right: (number))
+              operator: (arithmetic_operator)
+              right: (binary_expression
+                left: (identifier)
+                operator: (arithmetic_operator)
+                right: (number)))))))))
+
+==================
+Chained division
+==================
+
+$PK
+SC = CL/K/WT
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (binary_expression
+          left: (identifier)
+          operator: (arithmetic_operator)
+          right: (identifier))
+        operator: (arithmetic_operator)
+        right: (identifier)))))
+
+==================
+Addition with parameter refs
+==================
+
+$PK
+KA = THETA(1) + ETA(1)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (theta_ref index: (integer))
+        operator: (arithmetic_operator)
+        right: (eta_ref index: (integer))))))
+
+==================
+Additive error model
+==================
+
+$ERROR
+Y = F + EPS(1)
+
+---
+
+(source_file
+  (error_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (identifier)
+        operator: (arithmetic_operator)
+        right: (eps_ref index: (integer))))))
+
+==================
+Multiplicative error model
+==================
+
+$ERROR
+Y = F * EXP(ERR(1))
+
+---
+
+(source_file
+  (error_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (identifier)
+        operator: (arithmetic_operator)
+        right: (function_call
+          name: (function_name)
+          arguments: (argument_list
+            (err_ref index: (integer))))))))
+
+
+==================
+FLOOR function
+==================
+
+$PK
+X = FLOOR(Y)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (function_call
+        name: (function_name)
+        arguments: (argument_list
+          (identifier))))))
+
+==================
+CEILING function
+==================
+
+$PK
+X = CEILING(Y)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (function_call
+        name: (function_name)
+        arguments: (argument_list
+          (identifier))))))
+
+==================
+SIGN function
+==================
+
+$PK
+X = SIGN(Y)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (function_call
+        name: (function_name)
+        arguments: (argument_list
+          (identifier))))))
+

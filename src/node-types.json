@@ -1,0 +1,4240 @@
+[
+  {
+    "type": "abbreviated_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comres_option",
+          "named": true
+        },
+        {
+          "type": "declare_option",
+          "named": true
+        },
+        {
+          "type": "deriv_option",
+          "named": true
+        },
+        {
+          "type": "protect_option",
+          "named": true
+        },
+        {
+          "type": "record_keyword",
+          "named": true
+        },
+        {
+          "type": "replace_option",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "accept_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "ignore_condition",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "advan_option",
+    "named": true,
+    "fields": {
+      "number": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "argument_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "eps_ref",
+          "named": true
+        },
+        {
+          "type": "err_ref",
+          "named": true
+        },
+        {
+          "type": "eta_ref",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "indexed_access",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "theta_ref",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "assignment",
+    "named": true,
+    "fields": {
+      "target": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "indexed_access",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "eps_ref",
+            "named": true
+          },
+          {
+            "type": "err_ref",
+            "named": true
+          },
+          {
+            "type": "eta_ref",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "indexed_access",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "theta_ref",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "atol_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "auto_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "binary_expression",
+    "named": true,
+    "fields": {
+      "left": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "eps_ref",
+            "named": true
+          },
+          {
+            "type": "err_ref",
+            "named": true
+          },
+          {
+            "type": "eta_ref",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "indexed_access",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "theta_ref",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      },
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "arithmetic_operator",
+            "named": true
+          },
+          {
+            "type": "comparison_operator",
+            "named": true
+          },
+          {
+            "type": "logical_operator",
+            "named": true
+          }
+        ]
+      },
+      "right": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "eps_ref",
+            "named": true
+          },
+          {
+            "type": "err_ref",
+            "named": true
+          },
+          {
+            "type": "eta_ref",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "indexed_access",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "theta_ref",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "block_if",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "statement_block",
+            "named": true
+          }
+        ]
+      },
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "eps_ref",
+            "named": true
+          },
+          {
+            "type": "err_ref",
+            "named": true
+          },
+          {
+            "type": "eta_ref",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "indexed_access",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "theta_ref",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "else_clause",
+          "named": true
+        },
+        {
+          "type": "elseif_clause",
+          "named": true
+        },
+        {
+          "type": "keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "block_spec",
+    "named": true,
+    "fields": {
+      "size": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "call_statement",
+    "named": true,
+    "fields": {
+      "arguments": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "argument_list",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "calpha_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "centering_option",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "citer_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "column_alias",
+    "named": true,
+    "fields": {
+      "alias": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "column_def",
+    "named": true,
+    "fields": {
+      "modifier": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "column_alias",
+            "named": true
+          },
+          {
+            "type": "drop_modifier",
+            "named": true
+          },
+          {
+            "type": "skip_modifier",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "comp_def",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comp_option",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "comp_option",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "comres_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "covariance_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "compress_option",
+          "named": true
+        },
+        {
+          "type": "matrix_option",
+          "named": true
+        },
+        {
+          "type": "noslow_option",
+          "named": true
+        },
+        {
+          "type": "print_option",
+          "named": true
+        },
+        {
+          "type": "record_keyword",
+          "named": true
+        },
+        {
+          "type": "sigl_option",
+          "named": true
+        },
+        {
+          "type": "slow_option",
+          "named": true
+        },
+        {
+          "type": "special_option",
+          "named": true
+        },
+        {
+          "type": "tol_option",
+          "named": true
+        },
+        {
+          "type": "unconditional_option",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ctype_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "data_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "accept_option",
+          "named": true
+        },
+        {
+          "type": "checkout_option",
+          "named": true
+        },
+        {
+          "type": "filename",
+          "named": true
+        },
+        {
+          "type": "ignore_option",
+          "named": true
+        },
+        {
+          "type": "null_option",
+          "named": true
+        },
+        {
+          "type": "record_keyword",
+          "named": true
+        },
+        {
+          "type": "records_option",
+          "named": true
+        },
+        {
+          "type": "rewind_option",
+          "named": true
+        },
+        {
+          "type": "string",
+          "named": true
+        },
+        {
+          "type": "wide_option",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "declare_option",
+    "named": true,
+    "fields": {
+      "size": {
+        "multiple": true,
+        "required": false,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "deriv_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "des_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "assignment",
+          "named": true
+        },
+        {
+          "type": "block_if",
+          "named": true
+        },
+        {
+          "type": "call_statement",
+          "named": true
+        },
+        {
+          "type": "do_loop",
+          "named": true
+        },
+        {
+          "type": "do_while_loop",
+          "named": true
+        },
+        {
+          "type": "exit_statement",
+          "named": true
+        },
+        {
+          "type": "fortran_line",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "record_keyword",
+          "named": true
+        },
+        {
+          "type": "record_options",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "df_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "diagonal_spec",
+    "named": true,
+    "fields": {
+      "size": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "do_loop",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "statement_block",
+            "named": true
+          }
+        ]
+      },
+      "end": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "eps_ref",
+            "named": true
+          },
+          {
+            "type": "err_ref",
+            "named": true
+          },
+          {
+            "type": "eta_ref",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "indexed_access",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "theta_ref",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      },
+      "start": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "eps_ref",
+            "named": true
+          },
+          {
+            "type": "err_ref",
+            "named": true
+          },
+          {
+            "type": "eta_ref",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "indexed_access",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "theta_ref",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      },
+      "step": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "eps_ref",
+            "named": true
+          },
+          {
+            "type": "err_ref",
+            "named": true
+          },
+          {
+            "type": "eta_ref",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "indexed_access",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "theta_ref",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      },
+      "variable": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "do_while_loop",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "statement_block",
+            "named": true
+          }
+        ]
+      },
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "eps_ref",
+            "named": true
+          },
+          {
+            "type": "err_ref",
+            "named": true
+          },
+          {
+            "type": "eta_ref",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "indexed_access",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "theta_ref",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "drop_modifier",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "else_clause",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "statement_block",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "elseif_clause",
+    "named": true,
+    "fields": {
+      "body": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "statement_block",
+            "named": true
+          }
+        ]
+      },
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "eps_ref",
+            "named": true
+          },
+          {
+            "type": "err_ref",
+            "named": true
+          },
+          {
+            "type": "eta_ref",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "indexed_access",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "theta_ref",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "eonly_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "eps_ref",
+    "named": true,
+    "fields": {
+      "index": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "err_ref",
+    "named": true,
+    "fields": {
+      "index": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "error_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "assignment",
+          "named": true
+        },
+        {
+          "type": "block_if",
+          "named": true
+        },
+        {
+          "type": "call_statement",
+          "named": true
+        },
+        {
+          "type": "do_loop",
+          "named": true
+        },
+        {
+          "type": "do_while_loop",
+          "named": true
+        },
+        {
+          "type": "exit_statement",
+          "named": true
+        },
+        {
+          "type": "fortran_line",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "record_keyword",
+          "named": true
+        },
+        {
+          "type": "record_options",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "esample_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "estimation_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "atol_option",
+          "named": true
+        },
+        {
+          "type": "auto_option",
+          "named": true
+        },
+        {
+          "type": "calpha_option",
+          "named": true
+        },
+        {
+          "type": "centering_option",
+          "named": true
+        },
+        {
+          "type": "citer_option",
+          "named": true
+        },
+        {
+          "type": "ctype_option",
+          "named": true
+        },
+        {
+          "type": "df_option",
+          "named": true
+        },
+        {
+          "type": "eonly_option",
+          "named": true
+        },
+        {
+          "type": "etabar_option",
+          "named": true
+        },
+        {
+          "type": "file_option",
+          "named": true
+        },
+        {
+          "type": "fnleta_option",
+          "named": true
+        },
+        {
+          "type": "format_option",
+          "named": true
+        },
+        {
+          "type": "interaction_option",
+          "named": true
+        },
+        {
+          "type": "isample_option",
+          "named": true
+        },
+        {
+          "type": "laplacian_option",
+          "named": true
+        },
+        {
+          "type": "like_option",
+          "named": true
+        },
+        {
+          "type": "mapiter_option",
+          "named": true
+        },
+        {
+          "type": "maxeval_option",
+          "named": true
+        },
+        {
+          "type": "mceta_option",
+          "named": true
+        },
+        {
+          "type": "method_option",
+          "named": true
+        },
+        {
+          "type": "msfo_option",
+          "named": true
+        },
+        {
+          "type": "nburn_option",
+          "named": true
+        },
+        {
+          "type": "niter_option",
+          "named": true
+        },
+        {
+          "type": "noabort_option",
+          "named": true
+        },
+        {
+          "type": "nointer_option",
+          "named": true
+        },
+        {
+          "type": "noomegaboundtest_option",
+          "named": true
+        },
+        {
+          "type": "nosigmaboundtest_option",
+          "named": true
+        },
+        {
+          "type": "nothetaboundtest_option",
+          "named": true
+        },
+        {
+          "type": "nsig_option",
+          "named": true
+        },
+        {
+          "type": "numerical_option",
+          "named": true
+        },
+        {
+          "type": "posthoc_option",
+          "named": true
+        },
+        {
+          "type": "print_option",
+          "named": true
+        },
+        {
+          "type": "record_keyword",
+          "named": true
+        },
+        {
+          "type": "rtol_option",
+          "named": true
+        },
+        {
+          "type": "seed_option",
+          "named": true
+        },
+        {
+          "type": "sig_option",
+          "named": true
+        },
+        {
+          "type": "sigdig_option",
+          "named": true
+        },
+        {
+          "type": "sigl_option",
+          "named": true
+        },
+        {
+          "type": "slow_option",
+          "named": true
+        },
+        {
+          "type": "twoll_option",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "eta_range",
+    "named": true,
+    "fields": {
+      "end": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      },
+      "start": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "eta_ref",
+    "named": true,
+    "fields": {
+      "index": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "exit_statement",
+    "named": true,
+    "fields": {
+      "code": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      },
+      "level": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "file_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "filename",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "fnleta_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "format_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "format_spec",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "function_call",
+    "named": true,
+    "fields": {
+      "arguments": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "argument_list",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "function_name",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "if_statement",
+    "named": true,
+    "fields": {
+      "action": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "assignment",
+            "named": true
+          },
+          {
+            "type": "block_if",
+            "named": true
+          },
+          {
+            "type": "call_statement",
+            "named": true
+          },
+          {
+            "type": "do_loop",
+            "named": true
+          },
+          {
+            "type": "do_while_loop",
+            "named": true
+          },
+          {
+            "type": "exit_statement",
+            "named": true
+          },
+          {
+            "type": "fortran_line",
+            "named": true
+          },
+          {
+            "type": "if_statement",
+            "named": true
+          }
+        ]
+      },
+      "condition": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "eps_ref",
+            "named": true
+          },
+          {
+            "type": "err_ref",
+            "named": true
+          },
+          {
+            "type": "eta_ref",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "indexed_access",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "theta_ref",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ignore_condition",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ignore_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "ignore_character",
+          "named": true
+        },
+        {
+          "type": "ignore_condition",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "index_list",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "eps_ref",
+          "named": true
+        },
+        {
+          "type": "err_ref",
+          "named": true
+        },
+        {
+          "type": "eta_ref",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "indexed_access",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "theta_ref",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "indexed_access",
+    "named": true,
+    "fields": {
+      "indices": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "index_list",
+            "named": true
+          }
+        ]
+      },
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "input_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "column_def",
+          "named": true
+        },
+        {
+          "type": "record_keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "isample_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ivar_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "laplacian_option",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "mapiter_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "matrix_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "maxeval_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "mceta_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "method_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "mix_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "assignment",
+          "named": true
+        },
+        {
+          "type": "block_if",
+          "named": true
+        },
+        {
+          "type": "call_statement",
+          "named": true
+        },
+        {
+          "type": "do_loop",
+          "named": true
+        },
+        {
+          "type": "do_while_loop",
+          "named": true
+        },
+        {
+          "type": "exit_statement",
+          "named": true
+        },
+        {
+          "type": "fortran_line",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "record_keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "model_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "comp_def",
+          "named": true
+        },
+        {
+          "type": "ncomp_option",
+          "named": true
+        },
+        {
+          "type": "record_keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "msfi_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "filename",
+          "named": true
+        },
+        {
+          "type": "record_keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "msfo_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "filename",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "nburn_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ncomp_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "neta_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "netp_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "niter_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "nonparametric_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "record_keyword",
+          "named": true
+        },
+        {
+          "type": "unconditional_option",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "nsig_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "ntheta_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "nthp_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "null_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "omega_init",
+    "named": true,
+    "fields": {
+      "fixed": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "fix_option",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "fix_option",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "omega_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block_spec",
+          "named": true
+        },
+        {
+          "type": "diagonal_spec",
+          "named": true
+        },
+        {
+          "type": "omega_init",
+          "named": true
+        },
+        {
+          "type": "record_keyword",
+          "named": true
+        },
+        {
+          "type": "same_option",
+          "named": true
+        },
+        {
+          "type": "structure_option",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "omegap_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block_spec",
+          "named": true
+        },
+        {
+          "type": "diagonal_spec",
+          "named": true
+        },
+        {
+          "type": "fix_option",
+          "named": true
+        },
+        {
+          "type": "omega_init",
+          "named": true
+        },
+        {
+          "type": "record_keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "omegapd_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "omega_init",
+          "named": true
+        },
+        {
+          "type": "record_keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "option_setting",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "integer",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "parenthesized_expression",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "eps_ref",
+          "named": true
+        },
+        {
+          "type": "err_ref",
+          "named": true
+        },
+        {
+          "type": "eta_ref",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "indexed_access",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "theta_ref",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "pk_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "assignment",
+          "named": true
+        },
+        {
+          "type": "block_if",
+          "named": true
+        },
+        {
+          "type": "call_statement",
+          "named": true
+        },
+        {
+          "type": "do_loop",
+          "named": true
+        },
+        {
+          "type": "do_while_loop",
+          "named": true
+        },
+        {
+          "type": "exit_statement",
+          "named": true
+        },
+        {
+          "type": "fortran_line",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "record_keyword",
+          "named": true
+        },
+        {
+          "type": "record_options",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "plev_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "pred_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "assignment",
+          "named": true
+        },
+        {
+          "type": "block_if",
+          "named": true
+        },
+        {
+          "type": "call_statement",
+          "named": true
+        },
+        {
+          "type": "do_loop",
+          "named": true
+        },
+        {
+          "type": "do_while_loop",
+          "named": true
+        },
+        {
+          "type": "exit_statement",
+          "named": true
+        },
+        {
+          "type": "fortran_line",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        },
+        {
+          "type": "record_keyword",
+          "named": true
+        },
+        {
+          "type": "record_options",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "print_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "prior_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "ivar_option",
+          "named": true
+        },
+        {
+          "type": "neta_option",
+          "named": true
+        },
+        {
+          "type": "netp_option",
+          "named": true
+        },
+        {
+          "type": "ntheta_option",
+          "named": true
+        },
+        {
+          "type": "nthp_option",
+          "named": true
+        },
+        {
+          "type": "nwpri_option",
+          "named": true
+        },
+        {
+          "type": "plev_option",
+          "named": true
+        },
+        {
+          "type": "record_keyword",
+          "named": true
+        },
+        {
+          "type": "tnpri_option",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "problem_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "problem_text",
+          "named": true
+        },
+        {
+          "type": "record_keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "protect_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "record_options",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "option_setting",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "records_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "replace_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "eps_ref",
+          "named": true
+        },
+        {
+          "type": "err_ref",
+          "named": true
+        },
+        {
+          "type": "eta_ref",
+          "named": true
+        },
+        {
+          "type": "function_call",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "indexed_access",
+          "named": true
+        },
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        },
+        {
+          "type": "parenthesized_expression",
+          "named": true
+        },
+        {
+          "type": "theta_ref",
+          "named": true
+        },
+        {
+          "type": "unary_expression",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "rtol_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "number",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "scatter_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "record_keyword",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "seed_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "sig_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "sigdig_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "sigl_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "sigma_init",
+    "named": true,
+    "fields": {
+      "fixed": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "fix_option",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": true,
+        "required": true,
+        "types": [
+          {
+            "type": "(",
+            "named": false
+          },
+          {
+            "type": ")",
+            "named": false
+          },
+          {
+            "type": "fix_option",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "sigma_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block_spec",
+          "named": true
+        },
+        {
+          "type": "diagonal_spec",
+          "named": true
+        },
+        {
+          "type": "record_keyword",
+          "named": true
+        },
+        {
+          "type": "same_option",
+          "named": true
+        },
+        {
+          "type": "sigma_init",
+          "named": true
+        },
+        {
+          "type": "structure_option",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "sigmap_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block_spec",
+          "named": true
+        },
+        {
+          "type": "diagonal_spec",
+          "named": true
+        },
+        {
+          "type": "fix_option",
+          "named": true
+        },
+        {
+          "type": "record_keyword",
+          "named": true
+        },
+        {
+          "type": "sigma_init",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "sigmapd_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "record_keyword",
+          "named": true
+        },
+        {
+          "type": "sigma_init",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "sim_seed",
+    "named": true,
+    "fields": {
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "sim_seed_option",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "sim_seed_option",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "simulation_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "onlysim_option",
+          "named": true
+        },
+        {
+          "type": "record_keyword",
+          "named": true
+        },
+        {
+          "type": "sim_seed",
+          "named": true
+        },
+        {
+          "type": "subproblems_option",
+          "named": true
+        },
+        {
+          "type": "true_option",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "sizes_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "record_keyword",
+          "named": true
+        },
+        {
+          "type": "sizes_setting",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "sizes_setting",
+    "named": true,
+    "fields": {
+      "name": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "skip_modifier",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "source_file",
+    "named": true,
+    "root": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": false,
+      "types": [
+        {
+          "type": "abbreviated_record",
+          "named": true
+        },
+        {
+          "type": "covariance_record",
+          "named": true
+        },
+        {
+          "type": "data_record",
+          "named": true
+        },
+        {
+          "type": "des_record",
+          "named": true
+        },
+        {
+          "type": "error_record",
+          "named": true
+        },
+        {
+          "type": "estimation_record",
+          "named": true
+        },
+        {
+          "type": "input_record",
+          "named": true
+        },
+        {
+          "type": "mix_record",
+          "named": true
+        },
+        {
+          "type": "model_record",
+          "named": true
+        },
+        {
+          "type": "msfi_record",
+          "named": true
+        },
+        {
+          "type": "nonparametric_record",
+          "named": true
+        },
+        {
+          "type": "omega_record",
+          "named": true
+        },
+        {
+          "type": "omegap_record",
+          "named": true
+        },
+        {
+          "type": "omegapd_record",
+          "named": true
+        },
+        {
+          "type": "pk_record",
+          "named": true
+        },
+        {
+          "type": "pred_record",
+          "named": true
+        },
+        {
+          "type": "prior_record",
+          "named": true
+        },
+        {
+          "type": "problem_record",
+          "named": true
+        },
+        {
+          "type": "scatter_record",
+          "named": true
+        },
+        {
+          "type": "sigma_record",
+          "named": true
+        },
+        {
+          "type": "sigmap_record",
+          "named": true
+        },
+        {
+          "type": "sigmapd_record",
+          "named": true
+        },
+        {
+          "type": "simulation_record",
+          "named": true
+        },
+        {
+          "type": "sizes_record",
+          "named": true
+        },
+        {
+          "type": "subroutines_record",
+          "named": true
+        },
+        {
+          "type": "table_record",
+          "named": true
+        },
+        {
+          "type": "theta_record",
+          "named": true
+        },
+        {
+          "type": "thetap_record",
+          "named": true
+        },
+        {
+          "type": "thetapv_record",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "statement_block",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "assignment",
+          "named": true
+        },
+        {
+          "type": "block_if",
+          "named": true
+        },
+        {
+          "type": "call_statement",
+          "named": true
+        },
+        {
+          "type": "do_loop",
+          "named": true
+        },
+        {
+          "type": "do_while_loop",
+          "named": true
+        },
+        {
+          "type": "exit_statement",
+          "named": true
+        },
+        {
+          "type": "fortran_line",
+          "named": true
+        },
+        {
+          "type": "if_statement",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "string",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "structure_option",
+    "named": true,
+    "fields": {}
+  },
+  {
+    "type": "subproblems_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "subroutines_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "advan_option",
+          "named": true
+        },
+        {
+          "type": "record_keyword",
+          "named": true
+        },
+        {
+          "type": "tol_option",
+          "named": true
+        },
+        {
+          "type": "trans_option",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "table_column",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "eps_ref",
+          "named": true
+        },
+        {
+          "type": "eta_range",
+          "named": true
+        },
+        {
+          "type": "eta_ref",
+          "named": true
+        },
+        {
+          "type": "identifier",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "table_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "append_option",
+          "named": true
+        },
+        {
+          "type": "conditional_option",
+          "named": true
+        },
+        {
+          "type": "esample_option",
+          "named": true
+        },
+        {
+          "type": "file_option",
+          "named": true
+        },
+        {
+          "type": "firstreconly_option",
+          "named": true
+        },
+        {
+          "type": "format_option",
+          "named": true
+        },
+        {
+          "type": "forward_option",
+          "named": true
+        },
+        {
+          "type": "noappend_option",
+          "named": true
+        },
+        {
+          "type": "noprint_option",
+          "named": true
+        },
+        {
+          "type": "oneheader_option",
+          "named": true
+        },
+        {
+          "type": "record_keyword",
+          "named": true
+        },
+        {
+          "type": "seed_option",
+          "named": true
+        },
+        {
+          "type": "table_column",
+          "named": true
+        },
+        {
+          "type": "wreschol_option",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "theta_bounds",
+    "named": true,
+    "fields": {
+      "init": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "negative_infinity",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "positive_infinity",
+            "named": true
+          }
+        ]
+      },
+      "lower": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "negative_infinity",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "positive_infinity",
+            "named": true
+          }
+        ]
+      },
+      "upper": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "negative_infinity",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "positive_infinity",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": false,
+      "types": [
+        {
+          "type": "fix_option",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "theta_init",
+    "named": true,
+    "fields": {
+      "fixed": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "fix_option",
+            "named": true
+          }
+        ]
+      },
+      "value": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "theta_bounds",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "theta_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "record_keyword",
+          "named": true
+        },
+        {
+          "type": "theta_init",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "theta_ref",
+    "named": true,
+    "fields": {
+      "index": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "thetap_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "record_keyword",
+          "named": true
+        },
+        {
+          "type": "theta_init",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "thetapv_record",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "block_spec",
+          "named": true
+        },
+        {
+          "type": "diagonal_spec",
+          "named": true
+        },
+        {
+          "type": "fix_option",
+          "named": true
+        },
+        {
+          "type": "omega_init",
+          "named": true
+        },
+        {
+          "type": "record_keyword",
+          "named": true
+        },
+        {
+          "type": "values_option",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "tol_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "integer",
+          "named": true
+        },
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "trans_option",
+    "named": true,
+    "fields": {
+      "number": {
+        "multiple": false,
+        "required": false,
+        "types": [
+          {
+            "type": "integer",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "true_option",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "unary_expression",
+    "named": true,
+    "fields": {
+      "operand": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "binary_expression",
+            "named": true
+          },
+          {
+            "type": "eps_ref",
+            "named": true
+          },
+          {
+            "type": "err_ref",
+            "named": true
+          },
+          {
+            "type": "eta_ref",
+            "named": true
+          },
+          {
+            "type": "function_call",
+            "named": true
+          },
+          {
+            "type": "identifier",
+            "named": true
+          },
+          {
+            "type": "indexed_access",
+            "named": true
+          },
+          {
+            "type": "number",
+            "named": true
+          },
+          {
+            "type": "parenthesized_expression",
+            "named": true
+          },
+          {
+            "type": "theta_ref",
+            "named": true
+          },
+          {
+            "type": "unary_expression",
+            "named": true
+          }
+        ]
+      },
+      "operator": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "arithmetic_operator",
+            "named": true
+          },
+          {
+            "type": "logical_operator",
+            "named": true
+          }
+        ]
+      }
+    }
+  },
+  {
+    "type": "values_option",
+    "named": true,
+    "fields": {
+      "value1": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "number",
+            "named": true
+          }
+        ]
+      },
+      "value2": {
+        "multiple": false,
+        "required": true,
+        "types": [
+          {
+            "type": "number",
+            "named": true
+          }
+        ]
+      }
+    },
+    "children": {
+      "multiple": false,
+      "required": true,
+      "types": [
+        {
+          "type": "option_name",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "(",
+    "named": false
+  },
+  {
+    "type": ")",
+    "named": false
+  },
+  {
+    "type": ",",
+    "named": false
+  },
+  {
+    "type": ":",
+    "named": false
+  },
+  {
+    "type": "=",
+    "named": false
+  },
+  {
+    "type": "append_option",
+    "named": true
+  },
+  {
+    "type": "arithmetic_operator",
+    "named": true
+  },
+  {
+    "type": "checkout_option",
+    "named": true
+  },
+  {
+    "type": "comment",
+    "named": true,
+    "extra": true
+  },
+  {
+    "type": "comparison_operator",
+    "named": true
+  },
+  {
+    "type": "compress_option",
+    "named": true
+  },
+  {
+    "type": "conditional_option",
+    "named": true
+  },
+  {
+    "type": "etabar_option",
+    "named": true
+  },
+  {
+    "type": "filename",
+    "named": true
+  },
+  {
+    "type": "firstreconly_option",
+    "named": true
+  },
+  {
+    "type": "fix_option",
+    "named": true
+  },
+  {
+    "type": "format_spec",
+    "named": true
+  },
+  {
+    "type": "fortran_line",
+    "named": true
+  },
+  {
+    "type": "forward_option",
+    "named": true
+  },
+  {
+    "type": "function_name",
+    "named": true
+  },
+  {
+    "type": "identifier",
+    "named": true
+  },
+  {
+    "type": "ignore_character",
+    "named": true
+  },
+  {
+    "type": "integer",
+    "named": true
+  },
+  {
+    "type": "interaction_option",
+    "named": true
+  },
+  {
+    "type": "keyword",
+    "named": true
+  },
+  {
+    "type": "like_option",
+    "named": true
+  },
+  {
+    "type": "logical_operator",
+    "named": true
+  },
+  {
+    "type": "negative_infinity",
+    "named": true
+  },
+  {
+    "type": "noabort_option",
+    "named": true
+  },
+  {
+    "type": "noappend_option",
+    "named": true
+  },
+  {
+    "type": "nointer_option",
+    "named": true
+  },
+  {
+    "type": "noomegaboundtest_option",
+    "named": true
+  },
+  {
+    "type": "noprint_option",
+    "named": true
+  },
+  {
+    "type": "nosigmaboundtest_option",
+    "named": true
+  },
+  {
+    "type": "noslow_option",
+    "named": true
+  },
+  {
+    "type": "nothetaboundtest_option",
+    "named": true
+  },
+  {
+    "type": "number",
+    "named": true
+  },
+  {
+    "type": "numerical_option",
+    "named": true
+  },
+  {
+    "type": "nwpri_option",
+    "named": true
+  },
+  {
+    "type": "oneheader_option",
+    "named": true
+  },
+  {
+    "type": "onlysim_option",
+    "named": true
+  },
+  {
+    "type": "option_name",
+    "named": true
+  },
+  {
+    "type": "positive_infinity",
+    "named": true
+  },
+  {
+    "type": "posthoc_option",
+    "named": true
+  },
+  {
+    "type": "problem_text",
+    "named": true
+  },
+  {
+    "type": "record_keyword",
+    "named": true
+  },
+  {
+    "type": "rewind_option",
+    "named": true
+  },
+  {
+    "type": "same_option",
+    "named": true
+  },
+  {
+    "type": "slow_option",
+    "named": true
+  },
+  {
+    "type": "special_option",
+    "named": true
+  },
+  {
+    "type": "tnpri_option",
+    "named": true
+  },
+  {
+    "type": "twoll_option",
+    "named": true
+  },
+  {
+    "type": "unconditional_option",
+    "named": true
+  },
+  {
+    "type": "wide_option",
+    "named": true
+  },
+  {
+    "type": "wreschol_option",
+    "named": true
+  }
+]

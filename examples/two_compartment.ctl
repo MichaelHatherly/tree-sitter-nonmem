@@ -1,0 +1,58 @@
+$PROBLEM Two compartment IV bolus model
+
+$INPUT ID TIME AMT DV MDV RATE
+
+$DATA ../data/iv_data.csv IGNORE=C
+
+$SUBROUTINES ADVAN3 TRANS4
+
+$PK
+TVCL = THETA(1)
+TVV1 = THETA(2)
+TVQ = THETA(3)
+TVV2 = THETA(4)
+
+CL = TVCL * EXP(ETA(1))
+V1 = TVV1 * EXP(ETA(2))
+Q = TVQ * EXP(ETA(3))
+V2 = TVV2 * EXP(ETA(4))
+
+S1 = V1
+K12 = Q / V1
+K21 = Q / V2
+K10 = CL / V1
+
+$ERROR
+IPRED = F
+IF (IPRED.LE.0) IPRED = 0.0001
+IRES = DV - IPRED
+W = IPRED * THETA(5)
+IF (W.EQ.0) W = 1
+IWRES = IRES / W
+Y = IPRED * (1 + ERR(1))
+
+$THETA
+(0, 10, 100)    ; CL
+(0, 100, 1000)  ; V1
+(0, 5, 50)      ; Q
+(0, 200, 2000)  ; V2
+(0, 0.2)        ; PROP
+
+$OMEGA BLOCK(2)
+0.1             ; IIV CL
+0.05 0.1        ; COV, IIV V1
+
+$OMEGA
+0.1             ; IIV Q
+0.1             ; IIV V2
+
+$SIGMA
+0.04            ; PROP
+
+$ESTIMATION METHOD=1 INTER MAXEVAL=9999 PRINT=10 NOABORT
+
+$COVARIANCE PRINT=E
+
+$TABLE ID TIME DV IPRED CWRES
+       CL V1 Q V2
+       NOPRINT ONEHEADER FILE=sdtab2

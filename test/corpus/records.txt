@@ -1,0 +1,477 @@
+==================
+Problem record
+==================
+
+$PROBLEM One compartment PK model
+
+---
+
+(source_file
+  (problem_record
+    (record_keyword)
+    (problem_text)))
+
+==================
+Problem abbreviation
+==================
+
+$PROB Test model
+
+---
+
+(source_file
+  (problem_record
+    (record_keyword)
+    (problem_text)))
+
+==================
+Multiple records
+==================
+
+$PROBLEM Test
+$PK
+$ERROR
+
+---
+
+(source_file
+  (problem_record
+    (record_keyword)
+    (problem_text))
+  (pk_record
+    (record_keyword))
+  (error_record
+    (record_keyword)))
+
+==================
+Input record empty
+==================
+
+$INPUT
+
+---
+
+(source_file
+  (input_record
+    (record_keyword)))
+
+==================
+Data record empty
+==================
+
+$DATA
+
+---
+
+(source_file
+  (data_record
+    (record_keyword)))
+
+==================
+Theta record empty
+==================
+
+$THETA
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)))
+
+==================
+Omega record empty
+==================
+
+$OMEGA
+
+---
+
+(source_file
+  (omega_record
+    (record_keyword)))
+
+==================
+Sigma record empty
+==================
+
+$SIGMA
+
+---
+
+(source_file
+  (sigma_record
+    (record_keyword)))
+
+==================
+Estimation record empty
+==================
+
+$EST
+
+---
+
+(source_file
+  (estimation_record
+    (record_keyword)))
+
+==================
+Covariance record empty
+==================
+
+$COV
+
+---
+
+(source_file
+  (covariance_record
+    (record_keyword)))
+
+==================
+Table record empty
+==================
+
+$TABLE
+
+---
+
+(source_file
+  (table_record
+    (record_keyword)))
+
+==================
+Simulation record empty
+==================
+
+$SIM
+
+---
+
+(source_file
+  (simulation_record
+    (record_keyword)))
+
+==================
+Subroutines record empty
+==================
+
+$SUBR
+
+---
+
+(source_file
+  (subroutines_record
+    (record_keyword)))
+
+==================
+Model record empty
+==================
+
+$MODEL
+
+---
+
+(source_file
+  (model_record
+    (record_keyword)))
+
+==================
+DES record empty
+==================
+
+$DES
+
+---
+
+(source_file
+  (des_record
+    (record_keyword)))
+
+==================
+PRED record empty
+==================
+
+$PRED
+
+---
+
+(source_file
+  (pred_record
+    (record_keyword)))
+
+==================
+Case insensitivity
+==================
+
+$problem test
+$theta
+$omega
+
+---
+
+(source_file
+  (problem_record
+    (record_keyword)
+    (problem_text))
+  (theta_record
+    (record_keyword))
+  (omega_record
+    (record_keyword)))
+
+==================
+Mixed case keywords
+==================
+
+$theta 0.5
+$Omega 0.1
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init value: (number)))
+  (omega_record
+    (record_keyword)
+    (omega_init value: (number))))
+
+==================
+Line continuation
+==================
+
+$TABLE ID TIME DV &
+  IPRED CWRES FILE=sdtab
+
+---
+
+(source_file
+  (table_record
+    (record_keyword)
+    (table_column (identifier))
+    (table_column (identifier))
+    (table_column (identifier))
+    (table_column (identifier))
+    (table_column (identifier))
+    (file_option (option_name) (filename))))
+
+==================
+ABBREVIATED record
+==================
+
+$ABBR DERIV2=NO
+
+---
+
+(source_file
+  (abbreviated_record
+    (record_keyword)
+    (deriv_option (option_name))))
+
+==================
+SIZES record
+==================
+
+$SIZES PD=100
+
+---
+
+(source_file
+  (sizes_record
+    (record_keyword)
+    (sizes_setting (identifier) (integer))))
+
+==================
+SIZES with multiple options
+==================
+
+$SIZES NO=800 LIM6=800
+
+---
+
+(source_file
+  (sizes_record
+    (record_keyword)
+    (sizes_setting (identifier) (integer))
+    (sizes_setting (identifier) (integer))))
+
+==================
+IGN abbreviation
+==================
+
+$DATA data.csv IGN=@
+
+---
+
+(source_file
+  (data_record
+    (record_keyword)
+    (filename)
+    (ignore_option (option_name) (ignore_character))))
+
+==================
+PRED with code
+==================
+
+$PRED
+Y = THETA(1) + ETA(1) + EPS(1)
+
+---
+
+(source_file
+  (pred_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (binary_expression
+          left: (theta_ref index: (integer))
+          operator: (arithmetic_operator)
+          right: (eta_ref index: (integer)))
+        operator: (arithmetic_operator)
+        right: (eps_ref index: (integer))))))
+
+==================
+ABBR with DECLARE
+==================
+
+$ABBR DECLARE INTEGER IOCC
+
+---
+
+(source_file
+  (abbreviated_record
+    (record_keyword)
+    (declare_option (option_name) (option_name) (identifier))))
+
+==================
+ABBR DECLARE array
+==================
+
+$ABBR DECLARE MYARR(8)
+
+---
+
+(source_file
+  (abbreviated_record
+    (record_keyword)
+    (declare_option (option_name) (identifier) (integer))))
+
+==================
+ABBR REPLACE with indexed
+==================
+
+$ABBR REPLACE ETA(IOV1)=ETA(5)
+
+---
+
+(source_file
+  (abbreviated_record
+    (record_keyword)
+    (replace_option
+      (option_name)
+      (indexed_access name: (identifier) indices: (index_list (identifier)))
+      (eta_ref index: (integer)))))
+
+==================
+MIX record with probabilities
+==================
+
+$MIX
+P(1) = THETA(1)
+NSPOP = 2
+
+---
+
+(source_file
+  (mix_record
+    (record_keyword)
+    (assignment
+      target: (indexed_access
+        name: (identifier)
+        indices: (index_list (number)))
+      value: (theta_ref index: (integer)))
+    (assignment
+      target: (identifier)
+      value: (number))))
+
+==================
+SUBS abbreviation
+==================
+
+$SUBS ADVAN9 TOL=7
+
+---
+
+(source_file
+  (subroutines_record
+    (record_keyword)
+    (advan_option)
+    (tol_option (option_name) (integer))))
+
+==================
+MODEL with NCOMP
+==================
+
+$MODEL NCOMP=3
+
+---
+
+(source_file
+  (model_record
+    (record_keyword)
+    (ncomp_option (option_name) (integer))))
+
+==================
+MODEL with COMP
+==================
+
+$MODEL COMP=(DEPOT DEFDOSE)
+
+---
+
+(source_file
+  (model_record
+    (record_keyword)
+    (comp_def (option_name) name: (identifier) (comp_option))))
+
+==================
+MODEL multiple COMP
+==================
+
+$MODEL COMP=(DEPOT) COMP=(CENT) COMP=(PERI)
+
+---
+
+(source_file
+  (model_record
+    (record_keyword)
+    (comp_def (option_name) name: (identifier))
+    (comp_def (option_name) name: (identifier))
+    (comp_def (option_name) name: (identifier))))
+
+==================
+MSFI record
+==================
+
+$MSFI run1.msf
+
+---
+
+(source_file
+  (msfi_record
+    (record_keyword)
+    (filename)))
+
+==================
+NONPARAMETRIC record
+==================
+
+$NONP UNCONDITIONAL
+
+---
+
+(source_file
+  (nonparametric_record
+    (record_keyword)
+    (unconditional_option)))
+

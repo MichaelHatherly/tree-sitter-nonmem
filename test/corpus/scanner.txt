@@ -1,0 +1,241 @@
+==================
+Trailing decimal in expression
+==================
+
+$PK
+X = 1.-THETA(1)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (number)
+        operator: (arithmetic_operator)
+        right: (theta_ref
+          index: (integer))))))
+
+==================
+Leading decimal number
+==================
+
+$PK
+X = .5 + Y
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (number)
+        operator: (arithmetic_operator)
+        right: (identifier)))))
+
+==================
+Positive number with plus sign
+==================
+
+$THETA +0.5
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init
+      value: (number))))
+
+==================
+Negative number
+==================
+
+$THETA -0.5
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init value: (number))))
+
+==================
+Scientific notation E
+==================
+
+$THETA 1E-08
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init value: (number))))
+
+==================
+Scientific notation D
+==================
+
+$THETA 1.5D+3
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init value: (number))))
+
+==================
+Lowercase scientific notation
+==================
+
+$THETA 1.5e-06
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init value: (number))))
+
+==================
+Integer in BLOCK spec
+==================
+
+$OMEGA BLOCK(3)
+0.1
+
+---
+
+(source_file
+  (omega_record
+    (record_keyword)
+    (block_spec
+      (option_name)
+      size: (integer))
+    (omega_init
+      value: (number))))
+
+==================
+SIN as function call
+==================
+
+$PK
+X = SIN(Y)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (function_call
+        name: (function_name)
+        arguments: (argument_list
+          (identifier))))))
+
+==================
+SIN as variable
+==================
+
+$PK
+SIN = 5
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (number))))
+
+==================
+PHI as variable
+==================
+
+$PK
+PHI = LOG(X)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (function_call
+        name: (function_name)
+        arguments: (argument_list
+          (identifier))))))
+
+==================
+Number with .AND. operator
+==================
+
+$PK
+IF (0.GT.X .AND. Y.LT.10) Z = 1
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (if_statement
+      (keyword)
+      condition: (binary_expression
+        left: (binary_expression
+          left: (number)
+          operator: (comparison_operator)
+          right: (identifier))
+        operator: (logical_operator)
+        right: (binary_expression
+          left: (identifier)
+          operator: (comparison_operator)
+          right: (number)))
+      action: (assignment
+        target: (identifier)
+        value: (number)))))
+
+==================
+Double star exponentiation
+==================
+
+$PK
+X = 2**3
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (number)
+        operator: (arithmetic_operator)
+        right: (number)))))
+
+==================
+Negative number in bounds
+==================
+
+$THETA (-0.01, 0.5, 1.0)
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init
+      value: (theta_bounds
+        lower: (number)
+        init: (number)
+        upper: (number)))))
+

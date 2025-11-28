@@ -1,0 +1,72 @@
+$PROBLEM Target-mediated drug disposition model
+
+$INPUT ID TIME AMT DV MDV CMT EVID RATE
+
+$DATA ../data/tmdd_data.csv IGNORE=@
+
+$SUBROUTINES ADVAN13 TOL=9
+
+$MODEL
+NCOMP=4
+COMP=(CENTRAL)
+COMP=(PERIPH)
+COMP=(RECEPTOR)
+COMP=(COMPLEX)
+
+$PK
+CL = THETA(1) * EXP(ETA(1))
+V1 = THETA(2) * EXP(ETA(2))
+Q = THETA(3)
+V2 = THETA(4)
+KON = THETA(5)
+KOFF = THETA(6)
+KDEG = THETA(7)
+KSYN = THETA(8) * KDEG
+KINT = THETA(9)
+
+S1 = V1
+S3 = V1
+
+A_0(3) = KSYN / KDEG
+
+$DES
+CFREE = A(1) / V1
+CPERIPH = A(2) / V2
+RECEP = A(3) / V1
+COMPL = A(4) / V1
+
+DADT(1) = -CL/V1*A(1) - Q/V1*A(1) + Q/V2*A(2) - KON*CFREE*RECEP*V1 + KOFF*COMPL*V1
+DADT(2) = Q/V1*A(1) - Q/V2*A(2)
+DADT(3) = KSYN - KDEG*A(3) - KON*CFREE*RECEP*V1 + KOFF*COMPL*V1
+DADT(4) = KON*CFREE*RECEP*V1 - KOFF*COMPL*V1 - KINT*A(4)
+
+$ERROR
+CTOT = A(1)/V1 + A(4)/V1
+IPRED = CTOT
+Y = IPRED * (1 + ERR(1)) + ERR(2)
+
+$THETA
+(0, 0.5)        ; CL
+(0, 50)         ; V1
+(0, 1)          ; Q
+(0, 100)        ; V2
+(0, 0.1)        ; KON
+(0, 0.01)       ; KOFF
+(0, 0.1)        ; KDEG
+(0, 1)          ; KSYN factor
+(0, 0.05)       ; KINT
+
+$OMEGA
+0.09            ; IIV CL
+0.09            ; IIV V1
+
+$SIGMA
+0.04            ; PROP
+0.01            ; ADD
+
+$ESTIMATION METHOD=1 INTER MAXEVAL=9999 PRINT=5 NOABORT SIGL=9 NSIG=3
+
+$COVARIANCE PRINT=E
+
+$TABLE ID TIME DV IPRED CWRES
+       NOPRINT ONEHEADER FILE=sdtab3

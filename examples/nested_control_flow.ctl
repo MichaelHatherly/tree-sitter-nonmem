@@ -1,0 +1,95 @@
+$PROB Nested control flow - deep nesting, complex booleans
+$INP ID TIME DV AMT CMT FLAG SEX WT AGE
+$DATA data.csv IGNORE=@
+
+$SUB ADVAN4 TRANS4
+$PK
+TVCL = THETA(1)
+TVV1 = THETA(2)
+TVQ = THETA(3)
+TVV2 = THETA(4)
+
+; Deeply nested IF
+IF (CMT.EQ.1) THEN
+  IF (FLAG.EQ.1) THEN
+    IF (SEX.EQ.1) THEN
+      IF (AGE.GT.65) THEN
+        CL = TVCL * 0.6
+      ELSE
+        CL = TVCL * 0.8
+      ENDIF
+    ELSE
+      IF (WT.GT.100) THEN
+        CL = TVCL * 1.1
+      ELSE
+        CL = TVCL * 0.9
+      ENDIF
+    ENDIF
+  ELSE
+    CL = TVCL
+  ENDIF
+ELSE
+  CL = TVCL * 1.2
+ENDIF
+
+; Complex boolean expressions
+IF ((FLAG.EQ.1.OR.FLAG.EQ.2).AND.(SEX.EQ.0.OR.AGE.LT.18)) THEN
+  V1 = TVV1 * 0.8
+ELSEIF ((WT.GE.50.AND.WT.LE.100).OR.(AGE.GE.18.AND.AGE.LE.65)) THEN
+  V1 = TVV1
+ELSE
+  V1 = TVV1 * 1.2
+ENDIF
+
+; Nested with CALL
+IF (NEWIND.LE.1) THEN
+  CALL RANDOM(2, R)
+  IF (R.LT.0.5) THEN
+    GRP = 1
+  ELSE
+    GRP = 2
+  ENDIF
+ENDIF
+
+; DO loop
+DO WHILE (I.LT.10)
+  X = X + 1
+  IF (X.GT.5) THEN
+    EXIT
+  ENDIF
+ENDDO
+
+Q = TVQ
+V2 = TVV2
+K = CL/V1
+K12 = Q/V1
+K21 = Q/V2
+S1 = V1
+F1 = 1
+
+; Multiple ELSEIF chain
+IF (CMT.EQ.1) THEN
+  F1 = THETA(5)
+ELSEIF (CMT.EQ.2) THEN
+  F1 = THETA(6)
+ELSEIF (CMT.EQ.3) THEN
+  F1 = THETA(7)
+ELSEIF (CMT.EQ.4) THEN
+  F1 = THETA(8)
+ELSE
+  F1 = 1
+ENDIF
+
+$ERR
+IPRED = F
+Y = IPRED * (1 + ERR(1))
+
+$THETA (0, 5) (0, 50) (0, 2) (0, 100)
+       1 FIX 1 FIX 1 FIX 1 FIX
+
+$OMEGA 0.1 0.1 0.1 0.1
+$SIGMA 0.04
+
+$EST METHOD=1 MAXEVAL=9999
+$COV
+$TAB ID TIME IPRED CL V1 FILE=sdtab

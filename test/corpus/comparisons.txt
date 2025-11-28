@@ -1,0 +1,237 @@
+==================
+Comparison EQ
+==================
+
+$PK
+IF (SEX.EQ.1) TVCL = 0.8
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (if_statement
+      (keyword)
+      condition: (binary_expression
+        left: (identifier)
+        operator: (comparison_operator)
+        right: (number))
+      action: (assignment
+        target: (identifier)
+        value: (number)))))
+
+==================
+Comparison GT
+==================
+
+$PK
+IF (WT.GT.70) X = 1
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (if_statement
+      (keyword)
+      condition: (binary_expression
+        left: (identifier)
+        operator: (comparison_operator)
+        right: (number))
+      action: (assignment
+        target: (identifier)
+        value: (number)))))
+
+==================
+Logical AND
+==================
+
+$PK
+IF (A.GT.0 .AND. B.LT.10) X = 1
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (if_statement
+      (keyword)
+      condition: (binary_expression
+        left: (binary_expression
+          left: (identifier)
+          operator: (comparison_operator)
+          right: (number))
+        operator: (logical_operator)
+        right: (binary_expression
+          left: (identifier)
+          operator: (comparison_operator)
+          right: (number)))
+      action: (assignment
+        target: (identifier)
+        value: (number)))))
+
+==================
+Logical OR
+==================
+
+$PK
+IF (A.EQ.1 .OR. B.EQ.2) X = 1
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (if_statement
+      (keyword)
+      condition: (binary_expression
+        left: (binary_expression
+          left: (identifier)
+          operator: (comparison_operator)
+          right: (number))
+        operator: (logical_operator)
+        right: (binary_expression
+          left: (identifier)
+          operator: (comparison_operator)
+          right: (number)))
+      action: (assignment
+        target: (identifier)
+        value: (number)))))
+
+==================
+Logical NOT
+==================
+
+$PK
+IF (.NOT.FLAG) X = 1
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (if_statement
+      (keyword)
+      condition: (unary_expression
+        operator: (logical_operator)
+        operand: (identifier))
+      action: (assignment
+        target: (identifier)
+        value: (number)))))
+
+==================
+C-style equality
+==================
+
+$PK
+IF (X==1) Y = 2
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (if_statement
+      (keyword)
+      condition: (binary_expression
+        left: (identifier)
+        operator: (comparison_operator)
+        right: (number))
+      action: (assignment
+        target: (identifier)
+        value: (number)))))
+
+==================
+Comparison LE and GE
+==================
+
+$PK
+IF (X.LE.0.OR.Y.GE.100) Z = 1
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (if_statement
+      (keyword)
+      condition: (binary_expression
+        left: (binary_expression
+          left: (identifier)
+          operator: (comparison_operator)
+          right: (number))
+        operator: (logical_operator)
+        right: (binary_expression
+          left: (identifier)
+          operator: (comparison_operator)
+          right: (number)))
+      action: (assignment
+        target: (identifier)
+        value: (number)))))
+
+==================
+Comparison NE
+==================
+
+$PK
+IF (FLAG.NE.0) X = 1
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (if_statement
+      (keyword)
+      condition: (binary_expression
+        left: (identifier)
+        operator: (comparison_operator)
+        right: (number))
+      action: (assignment
+        target: (identifier)
+        value: (number)))))
+
+==================
+Greater than with symbol
+==================
+
+$PK
+IF(TIME>5) LAM = THETA(1)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (if_statement
+      (keyword)
+      condition: (binary_expression
+        left: (identifier)
+        operator: (comparison_operator)
+        right: (number))
+      action: (assignment
+        target: (identifier)
+        value: (theta_ref index: (integer))))))
+
+==================
+Less than with symbol
+==================
+
+$PK
+IF(X<0) Y = 1
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (if_statement
+      (keyword)
+      condition: (binary_expression
+        left: (identifier)
+        operator: (comparison_operator)
+        right: (number))
+      action: (assignment
+        target: (identifier)
+        value: (number)))))
+

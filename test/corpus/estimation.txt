@@ -1,0 +1,1058 @@
+==================
+SUBROUTINES record
+==================
+
+$SUBROUTINES ADVAN2 TRANS2
+
+---
+
+(source_file
+  (subroutines_record
+    (record_keyword)
+    (advan_option)
+    (trans_option)))
+
+==================
+SUBROUTINES with TOL
+==================
+
+$SUBR ADVAN6 TOL=9
+
+---
+
+(source_file
+  (subroutines_record
+    (record_keyword)
+    (advan_option)
+    (tol_option (option_name) (integer))))
+
+==================
+MODEL with compartments
+==================
+
+$MODEL
+COMP=(DEPOT)
+COMP=(CENTRAL)
+
+---
+
+(source_file
+  (model_record
+    (record_keyword)
+    (comp_def (option_name) (identifier))
+    (comp_def (option_name) (identifier))))
+
+==================
+COMP without parentheses
+==================
+
+$MODEL
+COMP=CENTRAL
+
+---
+
+(source_file
+  (model_record
+    (record_keyword)
+    (comp_def
+      (option_name)
+      (identifier))))
+
+==================
+COMP with options
+==================
+
+$MODEL
+COMP=(DEPOT DEFDOSE)
+
+---
+
+(source_file
+  (model_record
+    (record_keyword)
+    (comp_def
+      (option_name)
+      (identifier)
+      (comp_option))))
+
+==================
+NCOMP option
+==================
+
+$MODEL NCOMP=25
+
+---
+
+(source_file
+  (model_record
+    (record_keyword)
+    (ncomp_option
+      (option_name)
+      (integer))))
+
+==================
+MIX record
+==================
+
+$MIX
+NSPOP=2
+
+---
+
+(source_file
+  (mix_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (number))))
+
+==================
+ESTIMATION options
+==================
+
+$EST METHOD=1 MAXEVAL=9999 NOABORT PRINT=5
+
+---
+
+(source_file
+  (estimation_record
+    (record_keyword)
+    (method_option
+          (option_name)
+          (integer))
+    (maxeval_option
+          (option_name)
+          (integer))
+    (noabort_option)
+    (print_option (option_name) (integer))))
+
+==================
+ESTIMATION SAEM
+==================
+
+$EST METHOD=SAEM NITER=500
+
+---
+
+(source_file
+  (estimation_record
+    (record_keyword)
+    (method_option (option_name))
+    (niter_option (option_name) (integer))))
+
+==================
+ESTIMATION with INTER
+==================
+
+$EST METHOD=1 INTER POSTHOC
+
+---
+
+(source_file
+  (estimation_record
+    (record_keyword)
+    (method_option
+          (option_name)
+          (integer))
+    (interaction_option)
+    (posthoc_option)))
+
+==================
+METHOD without equals
+==================
+
+$EST METHOD 1 MAXEVAL 9999
+
+---
+
+(source_file
+  (estimation_record
+    (record_keyword)
+    (method_option
+          (option_name)
+          (integer))
+    (maxeval_option (option_name) (integer))))
+
+==================
+EST with -2LL and MCETA
+==================
+
+$EST METHOD=1 -2LL MCETA=4
+
+---
+
+(source_file
+  (estimation_record
+    (record_keyword)
+    (method_option
+          (option_name)
+          (integer))
+    (twoll_option)
+    (mceta_option (option_name)
+      (integer))))
+
+==================
+EST with NOINTER
+==================
+
+$EST METHOD=COND LAPLACE NOINTER
+
+---
+
+(source_file
+  (estimation_record
+    (record_keyword)
+    (method_option (option_name))
+    (laplacian_option)
+    (nointer_option)))
+
+==================
+LAPLACIAN option
+==================
+
+$EST METHOD=1 LAPLACIAN
+
+---
+
+(source_file
+  (estimation_record
+    (record_keyword)
+    (method_option
+          (option_name)
+          (integer))
+    (laplacian_option)))
+
+==================
+CONDITIONAL method
+==================
+
+$EST METHOD=CONDITIONAL
+
+---
+
+(source_file
+  (estimation_record
+    (record_keyword)
+    (method_option (option_name))))
+
+==================
+EST with AUTO option
+==================
+
+$EST METHOD=ITS AUTO=1
+
+---
+
+(source_file
+  (estimation_record
+    (record_keyword)
+    (method_option (option_name))
+    (auto_option (option_name)
+      (integer))))
+
+==================
+EST with MAPITER
+==================
+
+$EST METHOD=IMP MAPITER=0
+
+---
+
+(source_file
+  (estimation_record
+    (record_keyword)
+    (method_option (option_name))
+    (mapiter_option (option_name)
+      (integer))))
+
+==================
+EST with SIGDIG
+==================
+
+$EST METHOD=1 SIGDIG=3
+
+---
+
+(source_file
+  (estimation_record
+    (record_keyword)
+    (method_option
+          (option_name)
+          (integer))
+    (sigdig_option (option_name)
+      (integer))))
+
+==================
+EST with multiple options
+==================
+
+$EST METHOD=1 INTER MAXEVAL=9999 PRINT=5 NOABORT
+
+---
+
+(source_file
+  (estimation_record
+    (record_keyword)
+    (method_option
+          (option_name)
+          (integer))
+    (interaction_option)
+    (maxeval_option
+          (option_name)
+          (integer))
+    (print_option
+          (option_name)
+          (integer))
+    (noabort_option)))
+
+==================
+COVARIANCE options
+==================
+
+$COV PRINT=E UNCONDITIONAL
+
+---
+
+(source_file
+  (covariance_record
+    (record_keyword)
+    (print_option
+          (option_name)
+          (identifier))
+    (unconditional_option)))
+
+==================
+SIMULATION record
+==================
+
+$SIM (12345) ONLYSIM SUBPROBLEMS=100
+
+---
+
+(source_file
+  (simulation_record
+    (record_keyword)
+    (sim_seed value: (integer))
+    (onlysim_option)
+    (subproblems_option (option_name) (integer))))
+
+==================
+Full PK block
+==================
+
+$PK
+TVCL = THETA(1)
+TVV = THETA(2)
+CL = TVCL * EXP(ETA(1))
+V = TVV * EXP(ETA(2))
+K = CL / V
+S1 = V
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (theta_ref index: (integer)))
+    (assignment
+      target: (identifier)
+      value: (theta_ref index: (integer)))
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (identifier)
+        operator: (arithmetic_operator)
+        right: (function_call
+          name: (function_name)
+          arguments: (argument_list
+            (eta_ref index: (integer))))))
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (identifier)
+        operator: (arithmetic_operator)
+        right: (function_call
+          name: (function_name)
+          arguments: (argument_list
+            (eta_ref index: (integer))))))
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (identifier)
+        operator: (arithmetic_operator)
+        right: (identifier)))
+    (assignment
+      target: (identifier)
+      value: (identifier))))
+
+==================
+ERROR block
+==================
+
+$ERROR
+IPRED = F
+Y = IPRED * (1 + ERR(1))
+
+---
+
+(source_file
+  (error_record
+    (record_keyword)
+    (assignment
+      target: (identifier)
+      value: (identifier))
+    (assignment
+      target: (identifier)
+      value: (binary_expression
+        left: (identifier)
+        operator: (arithmetic_operator)
+        right: (parenthesized_expression
+          (binary_expression
+            left: (number)
+            operator: (arithmetic_operator)
+            right: (err_ref index: (integer))))))))
+
+==================
+ADVAN without TRANS
+==================
+
+$SUBROUTINE ADVAN2
+
+---
+
+(source_file
+  (subroutines_record
+    (record_keyword)
+    (advan_option)))
+
+==================
+SUBROUTINE singular form
+==================
+
+$SUBROUTINE ADVAN6 TRANS1 TOL=3
+
+---
+
+(source_file
+  (subroutines_record
+    (record_keyword)
+    (advan_option)
+    (trans_option)
+    (tol_option (option_name) (integer))))
+
+==================
+ESTIMATION full name
+==================
+
+$ESTIMATION METHOD=0 POSTHOC MAXEVAL=450
+
+---
+
+(source_file
+  (estimation_record
+    (record_keyword)
+    (method_option
+          (option_name)
+          (integer))
+    (posthoc_option)
+    (maxeval_option (option_name) (integer))))
+
+==================
+COVARIANCE full name
+==================
+
+$COVARIANCE
+
+---
+
+(source_file
+  (covariance_record
+    (record_keyword)))
+
+==================
+EST with EONLY
+==================
+
+$EST METHOD=IMP EONLY=1 ISAMPLE=1000
+
+---
+
+(source_file
+  (estimation_record
+    (record_keyword)
+    (method_option (option_name))
+    (eonly_option
+          (option_name)
+          (integer))
+    (isample_option (option_name) (integer))))
+
+==================
+EST with SIG
+==================
+
+$EST METHOD=1 MAXEVAL=99999 SIG=3
+
+---
+
+(source_file
+  (estimation_record
+    (record_keyword)
+    (method_option
+          (option_name)
+          (integer))
+    (maxeval_option
+          (option_name)
+          (integer))
+    (sig_option (option_name) (integer))))
+
+==================
+COMP with spaces
+==================
+
+$MODEL
+COMP = DEPOT
+COMP = CENTRAL
+
+---
+
+(source_file
+  (model_record
+    (record_keyword)
+    (comp_def (option_name) (identifier))
+    (comp_def (option_name) (identifier))))
+
+==================
+ADVAN with equals
+==================
+
+$SUBR ADVAN=13 TOL=9
+
+---
+
+(source_file
+  (subroutines_record
+    (record_keyword)
+    (advan_option (integer))
+    (tol_option (option_name) (integer))))
+
+==================
+EST with LIKE and NUMERICAL
+==================
+
+$EST METHOD=1 LAPLACE LIKE NUMERICAL SIGL=9 NSIG=3
+
+---
+
+(source_file
+  (estimation_record
+    (record_keyword)
+    (method_option
+          (option_name)
+          (integer))
+    (laplacian_option)
+    (like_option)
+    (numerical_option)
+    (sigl_option
+          (option_name)
+          (integer))
+    (nsig_option (option_name) (integer))))
+
+==================
+COV with MATRIX
+==================
+
+$COV PRINT=E MATRIX=R
+
+---
+
+(source_file
+  (covariance_record
+    (record_keyword)
+    (print_option
+          (option_name)
+          (identifier))
+    (matrix_option (option_name) (identifier))))
+
+==================
+EST with MSFO
+==================
+
+$EST METHOD=1 MAXEVAL=0 MSFO=run1.msf
+
+---
+
+(source_file
+  (estimation_record
+    (record_keyword)
+    (method_option
+          (option_name)
+          (integer))
+    (maxeval_option
+          (option_name)
+          (integer))
+    (msfo_option (option_name) (filename))))
+
+==================
+PK with record options
+==================
+
+$PK (CALLFL=-1)
+CL = THETA(1)
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (record_options
+      (option_setting
+        name: (identifier)
+        value: (integer)))
+    (assignment
+      target: (identifier)
+      value: (theta_ref index: (integer)))))
+
+==================
+ESTIM abbreviation
+==================
+
+$ESTIM MAXEVAL=0 METHOD=0 LIKE
+
+---
+
+(source_file
+  (estimation_record
+    (record_keyword)
+    (maxeval_option
+          (option_name)
+          (integer))
+    (method_option
+          (option_name)
+          (integer))
+    (like_option)))
+
+==================
+SUBROUTINE with TRANS
+==================
+
+$SUBROUTINE ADVAN3 TRANS4
+
+---
+
+(source_file
+  (subroutines_record
+    (record_keyword)
+    (advan_option)
+    (trans_option)))
+
+==================
+SUBROUTINE TRANS1
+==================
+
+$SUBROUTINE ADVAN6 TRANS1 TOL=3
+
+---
+
+(source_file
+  (subroutines_record
+    (record_keyword)
+    (advan_option)
+    (trans_option)
+    (tol_option (option_name) (integer))))
+
+==================
+SIMULATION with seed
+==================
+
+$SIMULATION (12345) ONLYSIM
+
+---
+
+(source_file
+  (simulation_record
+    (record_keyword)
+    (sim_seed value: (integer))
+    (onlysim_option)))
+
+==================
+SIMULATION with multiple seeds
+==================
+
+$SIMULATION (12345) (67890 UNIFORM) ONLYSIM
+
+---
+
+(source_file
+  (simulation_record
+    (record_keyword)
+    (sim_seed value: (integer))
+    (sim_seed value: (integer) (sim_seed_option))
+    (onlysim_option)))
+
+==================
+COV with SIGL and COMPRESS
+==================
+
+$COV SIGL=9 COMPRESS
+
+---
+
+(source_file
+  (covariance_record
+    (record_keyword)
+    (sigl_option
+          (option_name)
+          (integer))
+    (compress_option)))
+
+==================
+TAB abbreviation
+==================
+
+$TAB ID TIME IPRED FILE=sdtab
+
+---
+
+(source_file
+  (table_record
+    (record_keyword)
+    (table_column (identifier))
+    (table_column (identifier))
+    (table_column (identifier))
+    (file_option (option_name) (filename))))
+
+==================
+SIMULATION with TRUE=PRIOR
+==================
+
+$SIM (12345) TRUE=PRIOR
+
+---
+
+(source_file
+  (simulation_record
+    (record_keyword)
+    (sim_seed value: (integer))
+    (true_option (option_name))))
+
+==================
+SCATTER record
+==================
+
+$SCATTER DV PRED UNIT
+
+---
+
+(source_file
+  (scatter_record
+    (record_keyword)
+    (identifier)
+    (identifier)
+    (identifier)))
+
+==================
+NOAB abbreviation
+==================
+
+$EST METHOD=1 NOAB
+
+---
+
+(source_file
+  (estimation_record
+    (record_keyword)
+    (method_option (option_name) (integer))
+    (noabort_option)))
+
+==================
+OME abbreviation
+==================
+
+$OME 0.1
+
+---
+
+(source_file
+  (omega_record
+    (record_keyword)
+    (omega_init value: (number))))
+
+==================
+SIG abbreviation
+==================
+
+$SIG 0.04
+
+---
+
+(source_file
+  (sigma_record
+    (record_keyword)
+    (sigma_init value: (number))))
+
+==================
+EXIT without argument
+==================
+
+$PK
+DO WHILE (I.LT.5)
+  I = I + 1
+  EXIT
+ENDDO
+
+---
+
+(source_file
+  (pk_record
+    (record_keyword)
+    (do_while_loop
+      (keyword)
+      (keyword)
+      condition: (binary_expression
+        left: (identifier)
+        operator: (comparison_operator)
+        right: (number))
+      body: (statement_block
+        (assignment
+          target: (identifier)
+          value: (binary_expression
+            left: (identifier)
+            operator: (arithmetic_operator)
+            right: (number)))
+        (exit_statement (keyword)))
+      (keyword))))
+
+==================
+MOD abbreviation
+==================
+
+$MOD NCOMP=2
+
+---
+
+(source_file
+  (model_record
+    (record_keyword)
+    (ncomp_option (option_name) (integer))))
+
+==================
+THE abbreviation
+==================
+
+$THE 0.5
+
+---
+
+(source_file
+  (theta_record
+    (record_keyword)
+    (theta_init value: (number))))
+
+==================
+OMEG abbreviation
+==================
+
+$OMEG 0.1
+
+---
+
+(source_file
+  (omega_record
+    (record_keyword)
+    (omega_init value: (number))))
+
+==================
+SIGM abbreviation
+==================
+
+$SIGM 0.04
+
+---
+
+(source_file
+  (sigma_record
+    (record_keyword)
+    (sigma_init value: (number))))
+
+==================
+ESTI abbreviation
+==================
+
+$ESTI METHOD=1
+
+---
+
+(source_file
+  (estimation_record
+    (record_keyword)
+    (method_option (option_name) (integer))))
+
+==================
+COVA abbreviation
+==================
+
+$COVA PRINT=E
+
+---
+
+(source_file
+  (covariance_record
+    (record_keyword)
+    (print_option (option_name) (identifier))))
+
+==================
+TABL abbreviation
+==================
+
+$TABL ID TIME FILE=sdtab
+
+---
+
+(source_file
+  (table_record
+    (record_keyword)
+    (table_column (identifier))
+    (table_column (identifier))
+    (file_option (option_name) (filename))))
+
+==================
+SIMU abbreviation
+==================
+
+$SIMU (12345)
+
+---
+
+(source_file
+  (simulation_record
+    (record_keyword)
+    (sim_seed value: (integer))))
+
+==================
+SIZ abbreviation
+==================
+
+$SIZ LVR=50
+
+---
+
+(source_file
+  (sizes_record
+    (record_keyword)
+    (sizes_setting (identifier) (integer))))
+
+==================
+PRI abbreviation
+==================
+
+$PRI NWPRI
+
+---
+
+(source_file
+  (prior_record
+    (record_keyword)
+    (nwpri_option)))
+
+==================
+ONLYSIMULATION full form
+==================
+
+$SIM (12345) ONLYSIMULATION
+
+---
+
+(source_file
+  (simulation_record
+    (record_keyword)
+    (sim_seed value: (integer))
+    (onlysim_option)))
+
+==================
+SUBPROBLEM singular
+==================
+
+$SIM (12345) SUBPROBLEM=100
+
+---
+
+(source_file
+  (simulation_record
+    (record_keyword)
+    (sim_seed value: (integer))
+    (subproblems_option (option_name) (integer))))
+
+
+==================
+EST with FNLETA
+==================
+
+$EST METHOD=1 FNLETA=2
+
+---
+
+(source_file
+  (estimation_record
+    (record_keyword)
+    (method_option (option_name) (integer))
+    (fnleta_option (option_name) (integer))))
+
+==================
+EST with ATOL RTOL
+==================
+
+$EST METHOD=1 ATOL=1E-6 RTOL=1E-4
+
+---
+
+(source_file
+  (estimation_record
+    (record_keyword)
+    (method_option (option_name) (integer))
+    (atol_option (option_name) (number))
+    (rtol_option (option_name) (number))))
+
+==================
+EST with CENTERING
+==================
+
+$EST METHOD=SAEM CENTERING
+
+---
+
+(source_file
+  (estimation_record
+    (record_keyword)
+    (method_option (option_name))
+    (centering_option)))
+
+==================
+EST with ETABAR
+==================
+
+$EST METHOD=1 ETABAR
+
+---
+
+(source_file
+  (estimation_record
+    (record_keyword)
+    (method_option (option_name) (integer))
+    (etabar_option)))
+
+==================
+EST with DF
+==================
+
+$EST METHOD=1 DF=10
+
+---
+
+(source_file
+  (estimation_record
+    (record_keyword)
+    (method_option (option_name) (integer))
+    (df_option (option_name) (integer))))
+

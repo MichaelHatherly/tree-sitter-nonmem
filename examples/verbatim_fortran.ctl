@@ -1,0 +1,52 @@
+$PROBLEM Model with verbatim Fortran code
+
+$INPUT ID TIME AMT DV MDV
+
+$DATA ../data/pk_data.csv IGNORE=@
+
+$SUBROUTINES ADVAN6 TOL=9
+
+$MODEL
+COMP=(CENTRAL)
+
+$ABBREVIATED DERIV2=NO
+
+$PK
+"FIRST
+"      COMMON/PRCOMG/ IDUM1,IDUM2,IMAX,IDUM4,IDUM5
+"INTEGER IDUM1,IDUM2,IMAX,IDUM4,IDUM5
+"IMAX=10000000
+
+CL = THETA(1) * EXP(ETA(1))
+V = THETA(2) * EXP(ETA(2))
+K = CL / V
+
+$DES
+DADT(1) = -K * A(1)
+
+$ERROR
+IPRED = A(1) / V
+
+; Compute log-likelihood contribution
+"LNFAC = LGAMMA(DV + 1)
+
+W = SQRT(THETA(3)**2 + (THETA(4)*IPRED)**2)
+Y = IPRED + W * ERR(1)
+
+$THETA
+(0, 5)          ; CL
+(0, 50)         ; V
+(0, 0.1)        ; ADD
+(0, 0.1)        ; PROP
+
+$OMEGA
+0.09            ; IIV CL
+0.09            ; IIV V
+
+$SIGMA
+1 FIX
+
+$ESTIMATION METHOD=1 INTER MAXEVAL=9999 PRINT=5 NOABORT LAPLACIAN NUMERICAL
+
+$TABLE ID TIME DV IPRED
+       NOPRINT ONEHEADER FILE=sdtab6
