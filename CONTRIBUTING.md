@@ -48,6 +48,17 @@ input code here
 - Keep commits focused and atomic
 - Use clear commit messages
 
+## Releasing
+
+```sh
+tree-sitter version X.Y.Z
+git commit -am "Release X.Y.Z"
+git tag vX.Y.Z
+git push --tags origin main
+```
+
+The tag push triggers the publish workflow which creates a GitHub release.
+
 ## Reporting Issues
 
 Please include:
