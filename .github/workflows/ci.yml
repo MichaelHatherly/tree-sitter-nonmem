@@ -49,3 +49,16 @@ jobs:
         uses: tree-sitter/parse-action@f44ffa94f802024f27e821a72e6f2f3efc5dd521 # v4
         with:
           files: examples/*.ctl
+
+  wasm:
+    name: Build WASM
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@1af3b93b6815bc44a9784bd300feb67ff0d1eeb3 # v6.0.0
+      - name: Set up tree-sitter
+        uses: tree-sitter/setup-action/cli@c4c258862a6a7e43a7aef152256bbf659972c408 # v2
+      - name: Build WASM
+        run: tree-sitter build --wasm
+      - name: Test WASM
+        run: tree-sitter parse --wasm examples/one_compartment.ctl
