@@ -1,6 +1,6 @@
 #include "tree_sitter/parser.h"
 #include <string.h>
-#include <ctype.h>
+#include <wctype.h>
 
 enum TokenType {
   FUNCTION_NAME,
@@ -27,13 +27,13 @@ static const char* FUNCTION_NAMES[] = {
 // Case-insensitive comparison
 static int strcasecmp_custom(const char* a, const char* b) {
   while (*a && *b) {
-    char ca = toupper((unsigned char)*a);
-    char cb = toupper((unsigned char)*b);
+    wint_t ca = towupper((unsigned char)*a);
+    wint_t cb = towupper((unsigned char)*b);
     if (ca != cb) return ca - cb;
     a++;
     b++;
   }
-  return toupper((unsigned char)*a) - toupper((unsigned char)*b);
+  return towupper((unsigned char)*a) - towupper((unsigned char)*b);
 }
 
 // Check if word is a known function name
@@ -79,21 +79,21 @@ bool tree_sitter_nonmem_external_scanner_scan(
   if ((integer_valid || number_valid) && (lexer->lookahead == '+' || lexer->lookahead == '-')) {
     lexer->advance(lexer, false);
     // Must be followed by digit or decimal to be a signed number
-    if (!isdigit(lexer->lookahead) && lexer->lookahead != '.') {
+    if (!iswdigit(lexer->lookahead) && lexer->lookahead != '.') {
       return false;
     }
   }
 
-  if ((integer_valid || number_valid) && (isdigit(lexer->lookahead) || lexer->lookahead == '.')) {
+  if ((integer_valid || number_valid) && (iswdigit(lexer->lookahead) || lexer->lookahead == '.')) {
     // Handle leading decimal like .5
     if (lexer->lookahead == '.') {
       if (!number_valid) return false;
       lexer->mark_end(lexer);
       lexer->advance(lexer, false);
-      if (!isdigit(lexer->lookahead)) {
+      if (!iswdigit(lexer->lookahead)) {
         return false;  // Not a number (.AND., etc)
       }
-      while (isdigit(lexer->lookahead)) {
+      while (iswdigit(lexer->lookahead)) {
         lexer->advance(lexer, false);
       }
       lexer->mark_end(lexer);
@@ -104,7 +104,7 @@ bool tree_sitter_nonmem_external_scanner_scan(
         if (lexer->lookahead == '+' || lexer->lookahead == '-') {
           lexer->advance(lexer, false);
         }
-        while (isdigit(lexer->lookahead)) {
+        while (iswdigit(lexer->lookahead)) {
           lexer->advance(lexer, false);
         }
         lexer->mark_end(lexer);
@@ -114,12 +114,12 @@ bool tree_sitter_nonmem_external_scanner_scan(
     }
 
     // Must start with digit
-    if (!isdigit(lexer->lookahead)) {
+    if (!iswdigit(lexer->lookahead)) {
       return false;
     }
 
     // Read digits
-    while (isdigit(lexer->lookahead)) {
+    while (iswdigit(lexer->lookahead)) {
       lexer->advance(lexer, false);
     }
     lexer->mark_end(lexer);
@@ -129,7 +129,7 @@ bool tree_sitter_nonmem_external_scanner_scan(
     if (lexer->lookahead == '.') {
       lexer->advance(lexer, false);
 
-      if (isdigit(lexer->lookahead)) {
+      if (iswdigit(lexer->lookahead)) {
         // Has digits after decimal - it's a number
         if (!number_valid) {
           // Can't match as number, return integer part (already marked)
@@ -137,11 +137,11 @@ bool tree_sitter_nonmem_external_scanner_scan(
           return integer_valid;
         }
         has_decimal = true;
-        while (isdigit(lexer->lookahead)) {
+        while (iswdigit(lexer->lookahead)) {
           lexer->advance(lexer, false);
         }
         lexer->mark_end(lexer);
-      } else if (isalpha(lexer->lookahead)) {
+      } else if (iswalpha(lexer->lookahead)) {
         // Followed by letter - could be .AND., .EQ., etc.
         // Return the integer part only (already marked)
         lexer->result_symbol = integer_valid ? INTEGER : NUMBER;
@@ -171,7 +171,7 @@ bool tree_sitter_nonmem_external_scanner_scan(
       if (lexer->lookahead == '+' || lexer->lookahead == '-') {
         lexer->advance(lexer, false);
       }
-      while (isdigit(lexer->lookahead)) {
+      while (iswdigit(lexer->lookahead)) {
         lexer->advance(lexer, false);
       }
       lexer->mark_end(lexer);
@@ -187,7 +187,7 @@ bool tree_sitter_nonmem_external_scanner_scan(
   // Handle function name
   if (valid_symbols[FUNCTION_NAME]) {
     // Check if we're at the start of an identifier
-    if (!isalpha(lexer->lookahead) && lexer->lookahead != '_') {
+    if (!iswalpha(lexer->lookahead) && lexer->lookahead != '_') {
       return false;
     }
 
@@ -195,7 +195,7 @@ bool tree_sitter_nonmem_external_scanner_scan(
     char word[32];
     int len = 0;
 
-    while (isalnum(lexer->lookahead) || lexer->lookahead == '_') {
+    while (iswalnum(lexer->lookahead) || lexer->lookahead == '_') {
       if (len < 31) {
         word[len++] = lexer->lookahead;
       }
